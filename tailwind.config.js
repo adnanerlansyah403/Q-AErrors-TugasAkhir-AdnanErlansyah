@@ -6,7 +6,22 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    container: {
+      padding: {
+        DEFAULT: '1rem',
+        sm: '16px',
+        lg: '60px',
+      },
+    },
+    extend: {
+      colors: {
+        'red-primary': '#F53333',
+        'gray-primary': '#989393',
+        'gray-secondary': '#5E5E5E',
+        'black': "#000000",
+        'bluck': '#2F2E41'
+      }
+    },
   },
   plugins: [],
 }

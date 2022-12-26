@@ -4,12 +4,25 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Q&A Errors</title>
+        <title>@yield("title", "Q&A Errors")</title>
         @vite('resources/css/app.css')
     </head>
     <body class="antialiased">
 
-        <h1 class="text-center">Hello World</h1>
+        @include("layouts.header")
+
+        <main>
+            <article>
+
+                {{-- #HERO --}}
+                <section class="section">
+                    <div class="container"></div>
+                </section>
+
+            </article>
+        </main>
+
+        @include("layouts.footer")
 
     </body>
 </html>
