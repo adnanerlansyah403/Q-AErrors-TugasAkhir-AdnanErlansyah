@@ -14,10 +14,7 @@
         <main>
             <article>
 
-                {{-- #HERO --}}
-                <section class="section">
-                    <div class="container"></div>
-                </section>
+                @yield("content_frontend")
 
             </article>
         </main>

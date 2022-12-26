@@ -1,11 +1,11 @@
 @extends("main")
 
-@section("title", "My Profile")
+@section("title", "List Not Answer")
 
 
 @section("content_frontend")
 
-<h1>Profile</h1>
+<h1>List Not Answer</h1>
 
 
 @endsection

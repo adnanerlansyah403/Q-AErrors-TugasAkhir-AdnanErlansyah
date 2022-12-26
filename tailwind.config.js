@@ -6,12 +6,21 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   theme: {
-    container: {
-      padding: {
-        DEFAULT: '1rem',
-        sm: '16px',
-        lg: '60px',
-      },
+    // container: {
+    //   padding: {
+    //     DEFAULT: '1rem',
+    //     sm: '16px',
+    //     lg: '60px',
+    //   },
+    // },
+    fontWeight: {
+    },
+    fontSize: {
+      sm: '0.8rem',
+      base: '24px',
+      md: '26px',
+      lg: '32px',
+      xl: '48px'
     },
     extend: {
       colors: {
