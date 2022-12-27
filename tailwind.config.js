@@ -13,7 +13,8 @@ module.exports = {
     //     lg: '60px',
     //   },
     // },
-    fontWeight: {
+    fontFamily: {
+      'quick-sand': ['Quicksand', 'sans-serif'],
     },
     fontSize: {
       sm: '0.8rem',

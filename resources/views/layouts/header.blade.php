@@ -1,6 +1,6 @@
 <header x-bind:class="headerActive ? 'active' : ''" class="py-[20px] container flex items-center justify-between w-full active">
     <a href="#logo" class="text-xl">
-        <span class="span">E</span>rrors
+        <span class="span font-bold">E</span>rrors
     </a>
 
     <nav>
@@ -34,8 +34,10 @@
     </nav>
 
     <div class="text-md">
-        <a href="#">Sign <span class="span">In</span></a>
-        <a href="#">Sign <span class="span">Up</span></a>
+        <a href="{{ route("login") }}">Sign <span class="span">In</span></a>
+        {{-- <a href="{{ route("users.myquestion.index") }}">D<span class="span">ashboard</span></a> --}}
+        <a href="{{ route("register") }}">Sign <span class="span">Up</span></a>
+        {{-- <a href="{{ route("logout") }}">Sign <span class="span">Out</span></a> --}}
     </div>
 
 </header>

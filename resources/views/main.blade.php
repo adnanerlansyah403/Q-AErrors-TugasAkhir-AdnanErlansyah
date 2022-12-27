@@ -10,11 +10,18 @@
         {{-- AlpineJS --}}
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+        {{-- TinyMCE --}}
+        <script src="https://cdn.tiny.cloud/1/u2nxm9ys2v0iwr5re916e7g6e8yjcnyzb81g34b18pmx0kk2/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+        <script src="https://<hostname.tld>/tinymce.min.js" referrerpolicy="origin"></script>
+        <script src="https://cdn.tiny.cloud/1/u2nxm9ys2v0iwr5re916e7g6e8yjcnyzb81g34b18pmx0kk2/tinymce/6/plugins.min.js" referrerpolicy="origin"></script>
+
+        @stack("styles")
+
     </head>
     <body class="antialiased"
         x-data="{
             headerActive: false,
-            errorActive: false
+            errorActive: false,
         }"
     >
 

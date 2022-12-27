@@ -34,6 +34,10 @@ Route::prefix("/errors")
                     return view('pages.frontend.errors.searcherror.index');
                 });
 
+                Route::get("/create", function () {
+                    return view('pages.frontend.errors.searcherror.create');
+                });
+
                 Route::get("/show", function () {
                     return view('pages.frontend.errors.searcherror.show');
                 });
@@ -46,35 +50,47 @@ Route::prefix("/errors")
         Route::get("/fixerror", function () {
             return view("pages.frontend.errors.fixerror.index");
         });
+
+        Route::get("/fixerror/create", function () {
+            return view("pages.frontend.errors.fixerror.create");
+        });
+
+        Route::get("/fixerror/show", function () {
+            return view("pages.frontend.errors.fixerror.show");
+        });
     });
 
 
 // Halaman User Authenticate
 
-Route::prefix("/users")
+Route::prefix("/user")
     ->name("users.")
     ->group(function () {
 
         // Halaman tampilan profile user
-        Route::get("/", function () {
+        Route::get("/profile", function () {
             return view("pages.frontend.user.profile");
-        });
+        })->name("profile");
 
         // Halaman tampilan list pertanyaan user
         Route::get("/myquestion", function () {
             return view("pages.frontend.user.myquestion.index");
-        });
+        })->name("myquestion.index");
+
+        // Halaman tampilan edit pertanyaan user
         Route::get("/myquestion/edit", function () {
             return view("pages.frontend.user.myquestion.edit");
-        });
+        })->name("myquestion.edit");
+
 
         // Halaman tampilan list pemecahan error user
         Route::get("/myanswer", function () {
             return view("pages.frontend.user.myquestion.index");
-        });
+        })->name("myanswer.index");
+
         Route::get("/myanswer/edit", function () {
             return view("pages.frontend.user.myquestion.edit");
-        });
+        })->name("myanswer.edit");
     });
 
 
@@ -83,8 +99,8 @@ Route::prefix("/users")
 Route::get("/login", function () {
 
     return view("pages.auth.login");
-});
+})->name("login");
 
 Route::get("/register", function () {
     return view("pages.auth.register");
-});
+})->name("register");
