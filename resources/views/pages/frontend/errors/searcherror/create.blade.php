@@ -14,7 +14,7 @@
 
 <section class="section">
     <div class="container">
-        <p class="text-[18px]"><span class="span">Cari Masalah</span> / Create a Question</p>
+        <p class="text-[18px]"><span class="span font-bold">Cari Masalah</span> / Create a Question</p>
 
         <h1 class="text-lg font-black font-quick-sand mb-10">Tanyakan Masalahmu</h1>
 

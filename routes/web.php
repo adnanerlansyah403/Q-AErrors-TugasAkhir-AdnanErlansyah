@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.frontend.index');
+})->name('index');
+
+Route::get("/reviews/create", function () {
+
+    return view("pages.frontend.review.create");
 });
 
 // Errors Route
@@ -28,11 +33,12 @@ Route::prefix("/errors")
 
         // Halaman Error List
         Route::prefix("/searcherror")
+            ->name("searcherror.")
             ->group(function () {
 
                 Route::get("/", function () {
                     return view('pages.frontend.errors.searcherror.index');
-                });
+                })->name('index');
 
                 Route::get("/create", function () {
                     return view('pages.frontend.errors.searcherror.create');
@@ -49,7 +55,7 @@ Route::prefix("/errors")
 
         Route::get("/fixerror", function () {
             return view("pages.frontend.errors.fixerror.index");
-        });
+        })->name("fixerror.index");
 
         Route::get("/fixerror/create", function () {
             return view("pages.frontend.errors.fixerror.create");
@@ -62,6 +68,7 @@ Route::prefix("/errors")
 
 
 // Halaman User Authenticate
+
 
 Route::prefix("/user")
     ->name("users.")
@@ -93,6 +100,18 @@ Route::prefix("/user")
         })->name("myanswer.edit");
     });
 
+Route::prefix("/admin")
+    ->name("admin.")
+    ->group(function () {
+
+        Route::get("/dashboard", function () {
+            return view("pages.backend.admin.layouts.partials.index");
+        })->name("dashboard");
+
+        Route::get("/profile", function () {
+            return view("pages.backend.admin.profile");
+        })->name("profile.index");
+    });
 
 // Route Authentication
 

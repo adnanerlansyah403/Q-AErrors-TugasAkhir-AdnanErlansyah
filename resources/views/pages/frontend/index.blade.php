@@ -5,7 +5,7 @@
 @section("content_frontend")
 
 {{-- #HERO --}}
-<section class="section">
+<section class="section" id="hero">
     <div class="container flex justify-between">
 
         <div class="left-side">
@@ -38,7 +38,7 @@
 </section>
 
 {{-- #ABOUT --}}
-<section class="section">
+<section class="section" id="about">
     <div class="container flex justify-between gap-10">
 
         <div class="left-side">
@@ -58,7 +58,7 @@
 </section>
 
 {{-- #REVIEWS --}}
-<section class="section">
+<section class="section" id="reviews">
     <div class="container">
 
         <h1 class="text-lg text-center"> <span class="span">R</span>eviews</h1>
@@ -99,6 +99,13 @@
                     </div>
                 </div>
             </div>
+
+            <div class="flex items-center justify-center my-10">
+                <button class="border border-red-primary p-4 rounded-md text-black hover:bg-red-primary hover:text-white font-semibold transition ease-in-out duration-200">
+                    I want give a review too 😊
+                </button>
+            </div>
+
             <div class="pagination flex items-center justify-center gap-6">
                 <button class="bg-red-primary rounded-full text-white w-10 h-10 leading-10 hover:bg-slate-800 transition duration-200">
                     <ion-icon name="chevron-back-outline"></ion-icon>
@@ -113,7 +120,7 @@
 </section>
 
 {{-- #Contact --}}
-<section class="section">
+<section class="section" id="contact">
     <div class="container">
 
         <h1 class="text-lg text-center"> <span class="span">C</span>ontact</h1>

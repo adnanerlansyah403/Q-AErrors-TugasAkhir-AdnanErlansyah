@@ -5,7 +5,10 @@
 
 @section("content_frontend")
 
-<h1>Answer</h1>
-
+<section class="section">
+    <div class="container">
+        <p class="text-[18px]"><span class="span font-bold">Jawaban Saya</span></p>
+    </div>
+</section>
 
 @endsection
