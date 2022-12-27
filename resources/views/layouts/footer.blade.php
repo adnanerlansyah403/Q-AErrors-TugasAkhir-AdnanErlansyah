@@ -1,4 +1,4 @@
-<footer class="section text-center">
+<footer class="py-[60px] text-center">
 
     <p class="text-[22px]">
         @<span class="span font-bold">Error</span>

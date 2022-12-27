@@ -36,5 +36,120 @@
 
     </div>
 </section>
+
+{{-- #ABOUT --}}
+<section class="section">
+    <div class="container flex justify-between gap-10">
+
+        <div class="left-side">
+            <img src="{{ asset("assets/images/about.svg") }}" width="650" height="475" alt="">
+        </div>
+
+        <div class="right-side max-w-2xl">
+            <h1 class="text-xl"><span class="span">About</span> Us </h1>
+            <div class="text-slate-400 text-md relative mt-4">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{{-- #REVIEWS --}}
+<section class="section">
+    <div class="container">
+
+        <h1 class="text-lg text-center"> <span class="span">R</span>eviews</h1>
+
+        <div>
+            <div class="card-list mt-10 mb-16 flex items-center gap-10 flex-wrap">
+                <div class="card-item bg-white rounded-lg shadow-[rgba(0,_0,_0,_0.35)_0px_5px_15px] px-6 py-4 w-max flex-1">
+                    <p class=" italic"><span class="span text-lg">"</span> 
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, libero.
+                    <span class="span text-lg">"</span></p>
+                    <div class="flex items-center gap-4 mt-4">
+                        <figure>
+                            <img src="{{ asset("assets/images/taylor.png") }}" alt="" width="50" height="50">
+                        </figure>
+                        <h3 class="text-md"><span class="span">Taylor</span> Aswell </h3>
+                    </div>
+                </div>
+                <div class="card-item bg-white rounded-lg shadow-[rgba(0,_0,_0,_0.35)_0px_5px_15px] px-6 py-4 w-max flex-1">
+                    <p class=" italic"><span class="span text-lg">"</span> 
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, libero.
+                    <span class="span text-lg">"</span></p>
+                    <div class="flex items-center gap-4 mt-4">
+                        <figure>
+                            <img src="{{ asset("assets/images/taylor.png") }}" alt="" width="50" height="50">
+                        </figure>
+                        <h3 class="text-md"><span class="span">Taylor</span> Aswell </h3>
+                    </div>
+                </div>
+                <div class="card-item bg-white rounded-lg shadow-[rgba(0,_0,_0,_0.35)_0px_5px_15px] px-6 py-4 w-max flex-1">
+                    <p class=" italic"><span class="span text-lg">"</span> 
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, libero.
+                    <span class="span text-lg">"</span></p>
+                    <div class="flex items-center gap-4 mt-4">
+                        <figure>
+                            <img src="{{ asset("assets/images/taylor.png") }}" alt="" width="50" height="50">
+                        </figure>
+                        <h3 class="text-md"><span class="span">Taylor</span> Aswell </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="pagination flex items-center justify-center gap-6">
+                <button class="bg-red-primary rounded-full text-white w-10 h-10 leading-10 hover:bg-slate-800 transition duration-200">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </button>
+                <button class="bg-red-primary rounded-full text-white w-10 h-10 leading-10 hover:bg-slate-800 transition duration-200">
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{{-- #Contact --}}
+<section class="section">
+    <div class="container">
+
+        <h1 class="text-lg text-center"> <span class="span">C</span>ontact</h1>
+
+        <div class="mt-10 mb-16 flex justify-between flex-wrap">
+            <div class="left-side">
+                <img src="{{ asset("assets/images/contact.svg") }}" width="625" height="475" alt="">
+            </div>
+            <div class="flex-1">
+                <form action="">
+                    @csrf
+
+                    <div class="mb-10">
+                        <label for="name" class="block text-md font-medium leading-5 text-slate-700 justify-self-start mb-4"><span class="span">N</span>ame</label>
+                        <div class="shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] p-4 rounded-lg active:border border-red-primary transition duration-200">
+                            <input type="text" name="name" id="name" class="" value="{{ old('name') }}" class="" placeholder="Your name..." >
+                        </div>
+                    </div>
+
+                    <div class="mb-10">
+                        <label for="message" class="block text-md font-medium leading-5 text-slate-700 justify-self-start mb-4"><span class="span">M</span>essage</label>
+                        <textarea name="message" id="" class="shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] p-4 rounded-lg active:border border-red-primary transition duration-200 w-full" rows="10"></textarea>
+                    </div>
+
+                    <div class="flex justify-center items-center">
+                        <button type="submit" class="flex items-center gap-4 bg-red-primary p-4 rounded-lg text-white transition duration-200">
+                            Send
+                            <ion-icon name="send-outline"></ion-icon>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
     
 @endsection

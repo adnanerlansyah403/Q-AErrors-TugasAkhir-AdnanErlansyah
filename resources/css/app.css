@@ -18,16 +18,33 @@
         box-sizing: border-box;
     }
 
+    /* *:is(:hover, :focus-visible) {
+        text-decoration: none;
+        outline: none;
+        border: none;
+    } */
+
+    input,
+    select,
+    textarea {
+        @apply bg-transparent border-none outline-none
+    }
+
     .container {
         @apply px-[60px] max-w-none;
         max-width: unset !important;
     }
 
     .section {
-        @apply py-[35px];
+        @apply py-[120px];
     }
 
     /* HEADER */
+
+    header.active {
+        /* background-color: red; */
+        box-shadow: 0px 0px 30px 0px hsla(0, 0%, 0%, 0.2) !important;
+    }
 
 }
 
@@ -36,6 +53,8 @@
     .span {
         @apply text-red-primary
     }
+
+    /* INPUTS */
 
 }
 
