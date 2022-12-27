@@ -1,4 +1,4 @@
-@extends("pages.backend.admin.main_admin")
+@extends("pages.backend.main_admin")
 
 @section("content_admin")
     

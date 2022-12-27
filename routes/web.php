@@ -108,9 +108,39 @@ Route::prefix("/admin")
             return view("pages.backend.admin.layouts.partials.index");
         })->name("dashboard");
 
+        Route::prefix("/kategori/errors")
+            ->name("kategori.errors.")
+            ->group(function () {
+
+                Route::get("/", function () {
+
+                    return view("pages.backend.admin.kategori.errors.index");
+                })->name("index");
+
+                Route::get("/create", function () {
+
+                    return view("pages.backend.admin.kategori.errors.create");
+                })->name("create");
+
+                Route::get("/edit", function () {
+
+                    return view("pages.backend.admin.kategori.errors.edit");
+                })->name("edit");
+            });
+
         Route::get("/profile", function () {
-            return view("pages.backend.admin.profile");
+            return view("pages.backend.admin.profile.index");
         })->name("profile.index");
+
+        Route::get("/list", function () {
+            return view("pages.backend.admin.list");
+        })->name("list.index");
+        Route::get("/list/create", function () {
+            return view("pages.backend.admin.create");
+        })->name("list.create");
+        Route::get("/list/show", function () {
+            return view("pages.backend.admin.show");
+        })->name("list.show");
     });
 
 // Route Authentication
