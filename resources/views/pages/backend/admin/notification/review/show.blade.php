@@ -11,7 +11,7 @@
 
 
 <div class="p-6 mt-16">
-    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-[rgba(0,_0,_0,_0.02)_0px_1px_3px_0px,_rgba(27,_31,_35,_0.15)_0px_0px_0px_1px] rounded-lg">
+    <div class="relative flex flex-col min-w-0 break-words bg-white dark:bg-gray-800 w-full mb-6 shadow-[rgba(0,_0,_0,_0.02)_0px_1px_3px_0px,_rgba(27,_31,_35,_0.15)_0px_0px_0px_1px] rounded-lg">
         <div class="px-6">
             <div class="flex flex-wrap justify-center">
                 <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">

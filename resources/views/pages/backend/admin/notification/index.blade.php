@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.min.css" />
 
     <div class="mx-6">
-        <h3 class="mt-10"><span class="text-blue-800 font-bold">Admin</span> / Notification </h3>
-        <h1 class="text-blue-800 text-4xl font-bold mt-2">Notification</h1>    
+        <h3 class="mt-10"><span class="text-blue-800 font-bold dark:text-white">Admin</span> / Notification </h3>
+        <h1 class="text-blue-800 text-4xl font-bold mt-2 dark:text-white">Notification</h1>    
     </div>
 
     <!-- This is an example component -->
@@ -17,7 +17,7 @@
         <div class="border-b border-gray-200 dark:border-gray-700 mb-4">
             <ul class="flex flex-wrap -mb-px" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
                 <li class="mr-2" role="presentation">
-                    <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300 active" id="sharefix-tab" data-tabs-target="#sharefix" type="button" role="tab" aria-controls="sharefix" aria-selected="true">Share Fix Masalah</button>
+                    <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-white dark:hover:text-gray-300 active" id="sharefix-tab" data-tabs-target="#sharefix" type="button" role="tab" aria-controls="sharefix" aria-selected="true">Share Fix Masalah</button>
                 </li>
                 <li class="mr-2" role="presentation">
                     <button class="inline-block text-gray-500 hover:text-gray-600 hover:border-gray-300 rounded-t-lg py-4 px-4 text-sm font-medium text-center border-transparent border-b-2 dark:text-gray-400 dark:hover:text-gray-300" id="carimasalah-tab" data-tabs-target="#carimasalah" type="button" role="tab" aria-controls="carimasalah" aria-selected="false">Reviews</button>

@@ -5,12 +5,12 @@
 @section("content_admin")
 
 <div class="mx-6">
-    <h3 class="mt-10"><span class="text-blue-800 font-bold">Admin</span> / Notification / Fix Masalah / Details Fix Masalah </h3>
-    <h1 class="text-blue-800 text-4xl font-bold mt-2">Details Fix Masalah</h1>    
+    <h3 class="mt-10"><span class="text-blue-800 font-bold dark:text-white">Admin</span> / Notification / Fix Masalah / Details Fix Masalah </h3>
+    <h1 class="text-blue-800 text-4xl font-bold mt-2 dark:text-white">Details Fix Masalah</h1>    
 </div>
 
 <div class="p-6 mt-16">
-    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-[rgba(0,_0,_0,_0.02)_0px_1px_3px_0px,_rgba(27,_31,_35,_0.15)_0px_0px_0px_1px] rounded-lg">
+    <div class="relative flex flex-col min-w-0 break-words bg-white dark:bg-gray-800  w-full mb-6 shadow-[rgba(0,_0,_0,_0.02)_0px_1px_3px_0px,_rgba(27,_31,_35,_0.15)_0px_0px_0px_1px] rounded-lg">
         <div class="px-6">
             <div class="flex flex-wrap justify-center">
                 <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
@@ -43,11 +43,11 @@
                     </div>
                     </div>
                     <div class="text-center mt-12">
-                    <h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700">
+                    <h3 class="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 dark:text-white">
                     Jenna Stones
                     </h3>
                     <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
-                    <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
+                    <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400 dark:text-white"></i>
                     Los Angeles, California
                     </div>
                     <div class="mb-2 text-blueGray-600 mt-10">
@@ -58,16 +58,16 @@
                     <div class="flex flex-wrap justify-center">
                     <div class="w-full lg:w-9/12 px-4">
                         <div class="mt-2">
-                            <h3 class="text-lg font-bold">Pertanyaan</h3>
+                            <h3 class="text-lg font-bold dark:text-white">Pertanyaan</h3>
                             <p class="mb-4 text-lg leading-relaxed text-blueGray-700 italic">
-                                <span class="font-black text-2xl text-blue-800">"</span>
+                                <span class="font-black text-2xl text-blue-800 dark:text-white">"</span>
                                     Bagaimana cara membuat / menggunakan env di nodejs
                                 <span class="font-black text-2xl text-blue-800">"</span>
                             </p>
                         </div>
                         <div class="mt-6">
                             <h3 class="text-lg font-bold mb-2">Jawaban</h3>
-                            <p class="text-lg text-justify leading-relaxed text-blueGray-700">
+                            <p class="text-lg text-justify leading-relaxed text-blueGray-700 dark:text-white">
                                 Untuk menggunakan variabel lingkungan (env) di Node.js, Anda dapat menggunakan package dotenv. Package ini akan membaca file .env pada root project Anda dan menempatkan semua variabel yang ada di dalamnya ke dalam objek process.env. 
                             </p>
                         </div>

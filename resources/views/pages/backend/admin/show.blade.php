@@ -6,17 +6,17 @@
     
 <div class="mx-6">
 
-    <h3 class="mt-10"><span class="text-blue-800 font-bold">Admin</span> / Details </h3>
-    <h1 class="text-blue-800 text-4xl font-bold mt-2 mb-10">Details Admin</h1>
+    <h3 class="mt-10"><span class="text-blue-800 dark:text-white font-bold">Admin</span> / Details </h3>
+    <h1 class="text-blue-800 dark:text-white text-4xl font-bold mt-2 mb-10">Details Admin</h1>
 
-    <a href="{{ route("admin.list.index") }}" class="bg-blue-800 text-white p-2 rounded-lg">Kembali</a>
+    <a href="{{ route("admin.list.index") }}" class="bg-blue-800 dark:bg-gray-800 text-white p-4 rounded-lg">Kembali</a>
 
 </div>
 
 <div class="p-6">
 
-    <div class="bg-gray-200 font-sans h-screen w-full flex flex-row justify-center items-center">
-      <div class="card w-[500px] mx-auto bg-white  shadow-xl hover:shadow">
+    <div class="bg-gray-200 dark:bg-gray-600 font-sans h-screen w-full flex flex-row justify-center items-center">
+      <div class="card w-[500px] mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-xl hover:shadow">
          <img class="w-32 mx-auto rounded-full -mt-20 border-8 border-white" src="https://avatars.githubusercontent.com/u/67946056?v=4" alt="">
          {{-- <img class="w-32 mx-auto rounded-full -mt-20 border-8 border-white" src="{{ asset("assets/images/avatarwomanbg.png") }}" alt=""> --}}
          

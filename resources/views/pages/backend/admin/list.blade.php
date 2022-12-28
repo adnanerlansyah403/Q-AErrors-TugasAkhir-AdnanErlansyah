@@ -5,8 +5,8 @@
 @section("content_admin")
     
 <div class="mt-4 mx-4">
-    <h3 class="mt-10"><span class="text-blue-800 font-bold">Admin</span> / List </h3>
-    <h1 class="text-blue-800 text-4xl font-bold mt-2">Admin List</h1>
+    <h3 class="mt-10"><span class="text-blue-800 dark:text-white font-bold">Admin</span> / List </h3>
+    <h1 class="text-blue-800 dark:text-white text-4xl font-bold mt-2">Admin List</h1>
 
 
     <div class="mt-10 mb-8">

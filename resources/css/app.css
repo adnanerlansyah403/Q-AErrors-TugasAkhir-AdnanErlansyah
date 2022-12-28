@@ -145,6 +145,30 @@
 
     /* INPUTS */
 
+
+    /* ALERTS */
+
+    .alert {
+        @apply fixed -right-full top-20 z-50 rounded-lg max-w-[500px] w-full;
+        transition: .2s ease-in-out;
+    }
+
+    .alert.active {
+        @apply right-5
+    }
+
+    .alert-danger {
+        @apply bg-red-primary p-4
+    }
+
+    .alert-success {
+        @apply bg-green-400 p-4
+    }
+
+    .alert-warning {
+        @apply bg-yellow-400 p-4
+    }
+
 }
 
 @layer components {}

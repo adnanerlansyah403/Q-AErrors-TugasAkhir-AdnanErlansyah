@@ -155,6 +155,7 @@ Route::prefix("/admin")
                 })->name("edit");
             });
 
+
         Route::get("/profile", function () {
             return view("pages.backend.admin.profile.index");
         })->name("profile.index");

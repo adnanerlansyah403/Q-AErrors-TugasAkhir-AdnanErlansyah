@@ -6,8 +6,8 @@
 
 
 <div class="px-6">
-  <h3 class="mt-10"><span class="text-blue-800 font-bold">Admin</span> / Profile </h3>
-  <h1 class="text-blue-800 text-4xl font-bold mt-2">Admin Profile</h1>
+  <h3 class="mt-10"><span class="text-blue-800 dark:text-white font-bold">Admin</span> / Profile </h3>
+  <h1 class="text-blue-800 dark:text-white text-4xl font-bold mt-2">Admin Profile</h1>
 </div>
 
 <section class="section">

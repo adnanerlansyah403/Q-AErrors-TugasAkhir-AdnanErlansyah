@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="-mt-10 w-full">
-                        <label for="category" class="block text-md font-medium leading-5 text-slate-700 justify-self-start mb-4"><span class="span">C</span>ategory</label>
+                        <label for="category" class="block text-md font-medium leading-5 text-slate-700 justify-self-start mb-4"><span class="span">Q</span>uestion</label>
                         <div class="shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] p-4 rounded-lg active:border border-red-primary transition duration-200 w-full">
                             <textarea name="address" id="address" rows="10"></textarea>
                         </div>
