@@ -108,6 +108,33 @@ Route::prefix("/admin")
             return view("pages.backend.admin.layouts.partials.index");
         })->name("dashboard");
 
+        Route::prefix("/notification")
+            ->name("notification.")
+            ->group(function () {
+
+                Route::get("/", function () {
+                    return view("pages.backend.admin.notification.index");
+                })->name("index");
+
+                Route::prefix("/fixmasalah")
+                    ->name("fixmasalah.")
+                    ->group(function () {
+
+                        Route::get("/show", function () {
+                            return view("pages.backend.admin.notification.fixmasalah.show");
+                        })->name("show");
+                    });
+
+                Route::prefix("/reviews")
+                    ->name("reviews.")
+                    ->group(function () {
+
+                        Route::get("/show", function () {
+                            return view("pages.backend.admin.notification.review.show");
+                        })->name("show");
+                    });
+            });
+
         Route::prefix("/kategori/errors")
             ->name("kategori.errors.")
             ->group(function () {

@@ -52,21 +52,43 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-4 gap-4 text-black dark:text-white">
             <div class="md:col-span-2 xl:col-span-3">
-              <h3 class="text-lg font-semibold">Task summaries of Admin</h3>
+              <h3 class="text-lg font-semibold">Task summaries of All User</h3>
               {{-- <button type="submit" class="md:w-32 bg-blue-600 dark:bg-gray-100 text-white dark:text-gray-800 font-bold py-3 px-6 rounded-lg mt-4 hover:bg-blue-500 dark:hover:bg-gray-200 transition ease-in-out duration-300">Buat Todo</button> --}}
             </div>
-
-            <div>
-              <div class="rounded bg-gray-200 dark:bg-gray-800 p-3">
-                <div class="flex justify-between py-1 text-black dark:text-white">
-                  <h3 class="text-sm font-semibold">Tasks in QA</h3>
-                  {{-- <svg class="h-4 fill-current text-gray-600 dark:text-gray-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 10a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4z"></path></svg> --}}
-                </div>
-                <div class="text-sm text-black dark:text-gray-50 mt-2">
-                  <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">Pantau Website</div>
-                  <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">Pantau Notification dari user</div>
-                  <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">Update Kategori</div>
-                </div>
+            <div class="rounded bg-gray-200 dark:bg-gray-800 p-3 flex-auto">
+              <div class="flex justify-between py-1 text-black dark:text-white">
+                <h3 class="text-sm font-semibold">Tasks in User</h3>
+                {{-- <svg class="h-4 fill-current text-gray-600 dark:text-gray-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 10a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4z"></path></svg> --}}
+              </div>
+              <div class="text-sm text-black dark:text-gray-50 mt-2">
+                <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">Membuat Pertanyaan</div>
+                <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">Membalas Pertanyaan</div>
+                <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">Melihat pertanyaan</div>
+                <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">Share pemecahan masalah</div>
+                <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">Menghapus Pertanyaan</div>
+              </div>
+            </div>
+            <div class="rounded bg-gray-200 dark:bg-gray-800 p-3 flex-auto">
+              <div class="flex justify-between py-1 text-black dark:text-white">
+                <h3 class="text-sm font-semibold">Tasks in Admin</h3>
+                {{-- <svg class="h-4 fill-current text-gray-600 dark:text-gray-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 10a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4z"></path></svg> --}}
+              </div>
+              <div class="text-sm text-black dark:text-gray-50 mt-2">
+                <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">CRUD Kategori</div>
+                <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">Koreksi/Melihat Share Jawaban Masalah</div>
+                <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">Memberikan persetujuan untuk share Jawaban</div>
+                <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">Memberikan persetujuan untuk review dari user</div>
+              </div>
+            </div>
+            <div class="rounded bg-gray-200 dark:bg-gray-800 p-3 flex-auto">
+              <div class="flex justify-between py-1 text-black dark:text-white">
+                <h3 class="text-sm font-semibold">Tasks in Super Admin</h3>
+                {{-- <svg class="h-4 fill-current text-gray-600 dark:text-gray-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 10a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4zm7 0a1.999 1.999 0 1 0 0 4 1.999 1.999 0 1 0 0-4z"></path></svg> --}}
+              </div>
+              <div class="text-sm text-black dark:text-gray-50 mt-2">
+                <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">Membuat Akun Admin</div>
+                <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">Melihat Details Admin</div>
+                <div class="bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer">Menghapus Admin</div>
               </div>
             </div>
             
