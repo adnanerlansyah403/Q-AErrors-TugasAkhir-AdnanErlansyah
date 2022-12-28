@@ -45,7 +45,7 @@
                 
 
                 <div class="mb-2">
-                    <a href="#notanswer" class="w-max flex items-center gap-4 font-bold outline outline-1 outline-red-primary px-6 py-4 rounded-lg hover:bg-slate-800 hover:text-white transition duration-200 hover:outline-none">
+                    <a href="#comment" class="w-max flex items-center gap-4 font-bold outline outline-1 outline-red-primary px-6 py-4 rounded-lg hover:bg-slate-800 hover:text-white transition duration-200 hover:outline-none">
                         <ion-icon name="chatbox-ellipses-outline" class="text-md"></ion-icon>
                         <p><span class="span">Tambah</span> Komentar</p>
                     </a>
@@ -55,11 +55,20 @@
 
             <p class="text-md mt-10"><span class="span">Jawaban </span>(0)</p>
 
+
+            <div class="my-10 text-center flex flex-col items-center justify-center">
+                <figure class="mb-4">
+                    <img src="{{ asset("assets/images/authenticate.svg") }}" alt="gambarauthenticate" width="400" height="400">
+                </figure>
+                <h1 class=" max-w-md font-bold text-md text-center">Oops, You still not authorized. Please <a href="{{ route("login") }}" class="span">Login</a> to make a comment</h1>
+            </div>
+
+
             <form action="" class="mt-10">
                 @csrf
 
 
-                <div class="mb-6 w-full">
+                <div class="mb-6 w-full" id="comment">
                     <label for="comment" class="block text-md font-medium leading-5 text-slate-700 justify-self-start mb-4"><span class="span">C</span>omment</label>
                     <div class="shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] p-4 rounded-lg active:border border-red-primary transition duration-200">
                         <textarea name="comment" id="comment" rows="10" placeholder="Your comment..." class="text-md"></textarea>
