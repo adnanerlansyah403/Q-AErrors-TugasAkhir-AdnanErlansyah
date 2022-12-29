@@ -16,6 +16,9 @@
         <script src="https://cdn.tiny.cloud/1/u2nxm9ys2v0iwr5re916e7g6e8yjcnyzb81g34b18pmx0kk2/tinymce/6/plugins.min.js" referrerpolicy="origin"></script>
 
         @stack("styles")
+        
+        {{-- Livewire Styles --}}
+        @livewireStyles
 
     </head>
     <body class="antialiased"
@@ -67,5 +70,6 @@
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
+        @livewireScripts
     </body>
 </html>

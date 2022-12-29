@@ -15,13 +15,16 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id')->index();
-            $table->unsignedBigInteger('user_id')->index();
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('question');
+            $table->text('description')->nullable();
             $table->enum('level', ['easy', 'medium', 'hard'])->nullable();
             $table->boolean('status')->default(0);
+            $table->string('thumbnail_originalname')->nullable();
+            $table->string('thumbnail_path')->nullable();
+            $table->string('thumbnail_link')->nullable();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

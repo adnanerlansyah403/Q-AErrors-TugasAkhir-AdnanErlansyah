@@ -1,4 +1,6 @@
-<header x-bind:class="headerActive ? 'active' : ''" class="py-[20px] container flex items-center justify-between w-full active">
+<header 
+x-bind:class="headerActive ? 'active' : ''"
+class="py-[20px] container flex items-center justify-between w-full active">
     <a href="{{ route('home') }}" class="text-xl">
         <span class="span font-bold">E</span>rrors
     </a>

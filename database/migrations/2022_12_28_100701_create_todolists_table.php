@@ -15,8 +15,12 @@ return new class extends Migration
     {
         Schema::create('todolists', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('role_id')->nullable();
             $table->string('task');
             $table->string('description')->nullable();
+
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

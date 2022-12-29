@@ -64,41 +64,32 @@
         <h1 class="text-lg text-center"> <span class="span">R</span>eviews</h1>
 
         <div>
-            <div class="card-list mt-10 mb-16 flex items-center gap-10 flex-wrap">
-                <div class="card-item bg-white rounded-lg shadow-[rgba(0,_0,_0,_0.35)_0px_5px_15px] px-6 py-4 w-max flex-1">
-                    <p class=" italic"><span class="span text-lg">"</span> 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, libero.
-                    <span class="span text-lg">"</span></p>
-                    <div class="flex items-center gap-4 mt-4">
-                        <figure>
-                            <img src="{{ asset("assets/images/taylor.png") }}" alt="" width="50" height="50">
-                        </figure>
-                        <h3 class="text-md"><span class="span">Taylor</span> Aswell </h3>
+            <div class="card-list mt-10 mb-16 flex items-center gap-10 flex-wrap slider-smooth">
+                @forelse ($reviews as $review)
+                    <div class="card-item bg-white rounded-lg shadow-[rgba(0,_0,_0,_0.35)_0px_5px_15px] px-6 py-4 w-max flex-1" style="scroll-snap-align: start;">
+                        <p class=" italic"><span class="span text-lg">"</span> 
+                            {{ $review->message }}
+                        <span class="span text-lg">"</span></p>
+                        <div class="flex items-center gap-4 mt-4">
+                            <figure>
+                                <img src="{{ asset("assets/images/taylor.png") }}" alt="" width="50" height="50">
+                            </figure>
+                            @php
+                                $fullName = explode(' ', $review->user->name);
+                            @endphp
+                            <h3 class="text-md"><span class="span">{{ $fullName[0] }}</span> {{ isset($fullName[1]) ? $fullName[1] : '' }} </h3>
+                        </div>
                     </div>
-                </div>
-                <div class="card-item bg-white rounded-lg shadow-[rgba(0,_0,_0,_0.35)_0px_5px_15px] px-6 py-4 w-max flex-1">
-                    <p class=" italic"><span class="span text-lg">"</span> 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, libero.
-                    <span class="span text-lg">"</span></p>
-                    <div class="flex items-center gap-4 mt-4">
-                        <figure>
-                            <img src="{{ asset("assets/images/taylor.png") }}" alt="" width="50" height="50">
-                        </figure>
-                        <h3 class="text-md"><span class="span">Taylor</span> Aswell </h3>
+                @empty
+                    <div class="flex flex-col items-center justify-center w-full">
+                        <img src="{{ asset("assets/images/noreview.svg") }}" width="500" height="500" alt="">
+                        <h1 class="text-lg w-full text-center">
+                            Still no <span class="span">Reviews</span>
+                        </h1>
                     </div>
-                </div>
-                <div class="card-item bg-white rounded-lg shadow-[rgba(0,_0,_0,_0.35)_0px_5px_15px] px-6 py-4 w-max flex-1">
-                    <p class=" italic"><span class="span text-lg">"</span> 
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, libero.
-                    <span class="span text-lg">"</span></p>
-                    <div class="flex items-center gap-4 mt-4">
-                        <figure>
-                            <img src="{{ asset("assets/images/taylor.png") }}" alt="" width="50" height="50">
-                        </figure>
-                        <h3 class="text-md"><span class="span">Taylor</span> Aswell </h3>
-                    </div>
-                </div>
+                @endforelse
             </div>
+        </div>
 
             <div class="flex items-center justify-center my-10">
                 <a href="{{ route("reviews.create") }}" class="border border-red-primary p-4 rounded-md text-black hover:bg-red-primary hover:text-white font-semibold transition ease-in-out duration-200">
@@ -106,14 +97,14 @@
                 </a>
             </div>
 
-            <div class="pagination flex items-center justify-center gap-6">
+            {{-- <div class="pagination flex items-center justify-center gap-6">
                 <button class="bg-red-primary rounded-full text-white w-10 h-10 leading-10 hover:bg-slate-800 transition duration-200">
                     <ion-icon name="chevron-back-outline"></ion-icon>
                 </button>
                 <button class="bg-red-primary rounded-full text-white w-10 h-10 leading-10 hover:bg-slate-800 transition duration-200">
                     <ion-icon name="chevron-forward-outline"></ion-icon>
                 </button>
-            </div>
+            </div> --}}
         </div>
 
     </div>
@@ -125,35 +116,11 @@
 
         <h1 class="text-lg text-center"> <span class="span">C</span>ontact</h1>
 
-        <div class="mt-10 mb-16 flex justify-between flex-wrap">
+        <div class="mt-10 mb-16 flex justify-between flex-wrap gap-9">
             <div class="left-side">
                 <img src="{{ asset("assets/images/contact.svg") }}" width="625" height="475" alt="">
             </div>
-            <div class="flex-1">
-                <form action="">
-                    @csrf
-
-                    <div class="mb-10">
-                        <label for="name" class="block text-md font-medium leading-5 text-slate-700 justify-self-start mb-4"><span class="span">N</span>ame</label>
-                        <div class="shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] p-4 rounded-lg active:border border-red-primary transition duration-200">
-                            <input type="text" name="name" id="name" class="" value="{{ old('name') }}" class="" placeholder="Your name..." >
-                        </div>
-                    </div>
-
-                    <div class="mb-10">
-                        <label for="message" class="block text-md font-medium leading-5 text-slate-700 justify-self-start mb-4"><span class="span">M</span>essage</label>
-                        <textarea name="message" id="" class="shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] p-4 rounded-lg active:border border-red-primary transition duration-200 w-full" rows="10"></textarea>
-                    </div>
-
-                    <div class="flex justify-center items-center">
-                        <button type="submit" class="flex items-center gap-4 bg-red-primary p-4 rounded-lg text-white transition duration-200">
-                            Send
-                            <ion-icon name="send-outline"></ion-icon>
-                        </button>
-                    </div>
-
-                </form>
-            </div>
+            @livewire("form.contact-form")
         </div>
 
     </div>
