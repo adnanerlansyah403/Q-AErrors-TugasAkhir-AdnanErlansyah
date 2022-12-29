@@ -73,26 +73,13 @@ Route::prefix("/errors")
             ->name("searcherror.")
             ->group(function () {
 
-                Route::get("/", function () {
+                Route::get("/", [QuestionController::class, "index"])->name('index');
 
-                    // dd("test");
-                    $questions = Question::query()->latest()->paginate(9);
-
-                    return view('pages.frontend.errors.searcherror.index', compact('questions'));
-                })->name('index');
-
-                Route::get("/create", function () {
-                    return view('pages.frontend.errors.searcherror.create');
-                })->middleware("auth")->name("create");
+                Route::get("/create", [QuestionController::class, "create"])->middleware("auth")->name("create");
 
                 Route::get("/show/{question}", [QuestionController::class, "show"])->name("show");
 
-                Route::get("/notanswer", function () {
-
-                    $answers = Answer::query()->latest()->paginate(9);
-
-                    return view('pages.frontend.errors.searcherror.notanswer', compact('answers'));
-                })->name("notanswer.index");
+                Route::get("/notanswer", [QuestionController::class, 'indexNotAnswer'])->name("notanswer.index");
             });
 
 

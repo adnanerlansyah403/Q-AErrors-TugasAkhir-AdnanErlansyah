@@ -18,15 +18,15 @@
                     <span class="span">Not</span> Answer
                 </a>
             </div>
-            <div class="flex-1 flex items-center gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-max">
+            <form {{ route("errors.searcherror.index") }} class="flex-1 flex items-center gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-full">
                 <div class="shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] p-4 rounded-lg active:border border-red-primary transition duration-200 w-full">
-                    <input type="email" name="email" id="email" class="" value="{{ old('email') }}" class="" placeholder="Your email..." >
+                    <input type="keywords" name="keywords" id="keywords" class="" value="{{ old('keywords') }}" class="w-full" placeholder="Your keywords..." style="width: 100%">
                 </div>
 
                 <button type="submit" class="flex items-center gap-4 bg-red-primary p-4 rounded-lg text-white transition duration-200">
                     Search
                 </button>
-            </div>
+            </form>
         </div>
 
         <div class="w-full mt-6 flex flex-wrap items-center gap-6">

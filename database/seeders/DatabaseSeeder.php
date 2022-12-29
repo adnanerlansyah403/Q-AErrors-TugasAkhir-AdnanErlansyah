@@ -207,6 +207,7 @@ class DatabaseSeeder extends Seeder
                 'description' => "I'm still confused about what's the best way to get started with ReactJS.",
                 'user_id' => 4,
                 'category_id' => 9,
+                'status' => 1
             ],
             [
                 'title' => 'What is VueJS?',
@@ -214,6 +215,7 @@ class DatabaseSeeder extends Seeder
                 'description' => "I'm still confused about what's the best way to get started with VueJS.",
                 'user_id' => 5,
                 'category_id' => 10,
+                'status' => 1
             ],
             [
                 'title' => 'What is NextJS?',

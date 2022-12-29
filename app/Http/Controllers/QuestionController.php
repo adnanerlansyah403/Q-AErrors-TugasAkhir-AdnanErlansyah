@@ -12,9 +12,14 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $questions = Question::query()
+            ->latest()
+            ->where('slug', 'LIKE', '%' . $request->input('keywords') . '%')
+            ->paginate(9);
+
+        return view('pages.frontend.errors.searcherror.index', compact('questions'));
     }
 
     /**
@@ -24,7 +29,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.frontend.errors.searcherror.create');
     }
 
     /**
@@ -81,5 +86,23 @@ class QuestionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    // Not Answer
+    public function indexNotAnswer(Request $request)
+    {
+
+        $questions = Question::query()
+            ->where('status', 0)
+            ->where('slug', 'LIKE', '%' . $request->input('keywords') . '%')
+            ->latest()->paginate(9);
+
+        return view('pages.frontend.errors.searcherror.notanswer', compact('questions'));
+    }
+
+    public function showNotAnswer(Question $question)
+    {
+        return view('pages.frontend.errors.searcherror.notanswer', compact('question'));
     }
 }

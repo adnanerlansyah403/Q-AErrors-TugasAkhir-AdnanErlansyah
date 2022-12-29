@@ -21,34 +21,34 @@
                     <span class="span">Not</span> Answer
                 </a>
             </div>
-            <div class="flex-1 flex items-center gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-max">
+            <form action="{{ route("errors.searcherror.notanswer.index") }}" class="flex-1 flex items-center gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-max">
                 <div class="shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] p-4 rounded-lg active:border border-red-primary transition duration-200 w-full">
-                    <input type="email" name="email" id="email" class="" value="{{ old('email') }}" class="" placeholder="Your email..." >
+                    <input type="keywords" name="keywords" id="keywords" class="" value="{{ old('keywords') }}" class="w-full" placeholder="Your keywords..." style="width: 100%">
                 </div>
 
                 <button type="submit" class="flex items-center gap-4 bg-red-primary p-4 rounded-lg text-white transition duration-200">
                     Search
                 </button>
-            </div>
+            </form>
         </div>
 
         <div class="w-full mt-6 flex flex-wrap items-center gap-6">
-            @forelse ($answers as $a)
+            @forelse ($questions as $q)
                 <div class="card-item gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-[49%] h-[300px]">
-                    <a href="" class="text-md font-bold mb-1">{{ $a->title }}</a>
+                    <a href="{{ route("errors.searcherror.show", $q) }}" class="text-md font-bold mb-1">{{ $q->title }}</a>
                     <h3 class="font-semibold text-[16px]">
                         Category: 
                         <span class="span">
-                            {{ $a->category->name }}
+                            {{ $q->category->name }}
                         </span>
                     </h3>
                     <p class="text-[18px] text-slate-500 mt-6">
-                        {{ Str::limit($a->description, 100, "...") }}
+                        {{ Str::limit($q->description, 100, "...") }}
                     </p>
                     <div class="flex justify-between items-center mt-6">
                         <div>
-                            <h3 class="font-bold">Created at <span class="span">{{ Carbon\Carbon::parse($a->created_at)->diffForHumans() }}</span></h3>
-                            <h3 class="font-bold">By <span class="span">{{ $a->user->name }}</span></h3>
+                            <h3 class="font-bold">Created at <span class="span">{{ Carbon\Carbon::parse($q->created_at)->diffForHumans() }}</span></h3>
+                            <h3 class="font-bold">By <span class="span">{{ $q->user->name }}</span></h3>
                         </div>
                     </div>
                 </div>
