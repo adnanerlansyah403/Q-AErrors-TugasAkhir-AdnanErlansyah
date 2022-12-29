@@ -40,7 +40,7 @@ class Alert extends Component
      *
      * @return void
      */
-    public function __construct($type = "", $message, $icon = "", $status = "")
+    public function __construct($type = "", $message = null, $icon = "", $status = "")
     {
         $this->type = $type;
         $this->message = $message;

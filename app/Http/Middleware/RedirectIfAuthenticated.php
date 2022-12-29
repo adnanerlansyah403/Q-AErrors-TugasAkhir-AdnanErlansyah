@@ -23,7 +23,11 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                if (Auth::user()->role->id == 1) {
+                    return redirect(RouteServiceProvider::HOME)->withErrors(["Anda sudah authentikasi!"]);
+                }
+
+                return redirect()->route('admin.dashboard')->withErrors(["Anda sudah authentikasi! ~"]);
             }
         }
 

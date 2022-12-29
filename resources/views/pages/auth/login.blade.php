@@ -15,7 +15,7 @@ x-data="{
 
         <h1 class="text-lg text-center mb-10"><span class="span">W</span>elcome</h1>
 
-        <form action="" class="max-w-lg mx-auto">
+        <form action="{{ route("auth.login") }}" method="POST" class="max-w-lg mx-auto">
             @csrf
 
             <div class="mb-10">
@@ -42,7 +42,7 @@ x-data="{
             </div>
 
             <p class="text-[26px] mt-10">
-                Don't have an account?, <span class="span">Register Now!</span>
+                Don't have an account?, <a href="{{ route("register") }}" class="span">Register Now!</a>
             </p>
         </form>
 

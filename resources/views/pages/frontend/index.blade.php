@@ -101,9 +101,9 @@
             </div>
 
             <div class="flex items-center justify-center my-10">
-                <button class="border border-red-primary p-4 rounded-md text-black hover:bg-red-primary hover:text-white font-semibold transition ease-in-out duration-200">
+                <a href="{{ route("reviews.create") }}" class="border border-red-primary p-4 rounded-md text-black hover:bg-red-primary hover:text-white font-semibold transition ease-in-out duration-200">
                     I want give a review too 😊
-                </button>
+                </a>
             </div>
 
             <div class="pagination flex items-center justify-center gap-6">

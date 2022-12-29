@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,12 +22,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.frontend.index');
-})->name('index');
+})
+    ->name('home');
 
 Route::get("/reviews/create", function () {
 
     return view("pages.frontend.review.create");
-});
+})->middleware([
+    'auth',
+    'checkRole:user'
+])->name('reviews.create');
 
 // Errors Route
 
@@ -42,16 +50,20 @@ Route::prefix("/errors")
 
                 Route::get("/create", function () {
                     return view('pages.frontend.errors.searcherror.create');
-                });
+                })->middleware("auth")->name("create");
 
                 Route::get("/show", function () {
                     return view('pages.frontend.errors.searcherror.show');
-                });
+                })->name("show");
 
                 Route::get("/notanswer", function () {
                     return view('pages.frontend.errors.searcherror.notanswer');
-                });
+                })->name("notanswer.index");
             });
+
+
+
+        // Halaman Jawaban Error List
 
         Route::get("/fixerror", function () {
             return view("pages.frontend.errors.fixerror.index");
@@ -59,11 +71,11 @@ Route::prefix("/errors")
 
         Route::get("/fixerror/create", function () {
             return view("pages.frontend.errors.fixerror.create");
-        });
+        })->middleware("auth")->name("fixerror.create");
 
         Route::get("/fixerror/show", function () {
             return view("pages.frontend.errors.fixerror.show");
-        });
+        })->name("fixerror.show");
     });
 
 
@@ -71,6 +83,10 @@ Route::prefix("/errors")
 
 
 Route::prefix("/user")
+    ->middleware([
+        'auth',
+        'checkRole:user'
+    ])
     ->name("users.")
     ->group(function () {
 
@@ -101,6 +117,10 @@ Route::prefix("/user")
     });
 
 Route::prefix("/admin")
+    ->middleware([
+        'auth',
+        'checkRole:admin'
+    ])
     ->name("admin.")
     ->group(function () {
 
@@ -176,8 +196,28 @@ Route::prefix("/admin")
 Route::get("/login", function () {
 
     return view("pages.auth.login");
-})->name("login");
+})
+    ->middleware('guest')
+    ->name("login");
+Route::post("/auth/login", [LoginController::class, "authenticate"])
+    ->middleware('guest')
+    ->name("auth.login");
 
 Route::get("/register", function () {
     return view("pages.auth.register");
-})->name("register");
+})
+    ->middleware('guest')
+    ->name("register");
+Route::post("/auth/register", [RegisterController::class, "register"])
+    ->middleware('guest')
+    ->name("auth.register");
+
+Route::get("/auth/logout", function (Request $request) {
+    Auth::logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    return redirect()->route('login')->with('success', 'Anda berhasil logout');
+})->middleware("auth")->name("auth.logout");
