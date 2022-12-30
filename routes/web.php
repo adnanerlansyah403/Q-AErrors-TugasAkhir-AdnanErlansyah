@@ -90,6 +90,10 @@ Route::prefix("/errors")
 
                 Route::get("/show/{question}", [QuestionController::class, "show"])->name("show");
 
+                Route::get("/edit/{question}", [QuestionController::class, "edit"])->name("edit");
+
+                Route::put("/update/{question}", [QuestionController::class, "update"])->name("update");
+
                 Route::get("/notanswer", [QuestionController::class, 'indexNotAnswer'])->name("notanswer.index");
 
                 // Comment Routes
@@ -140,6 +144,7 @@ Route::prefix("/user")
         Route::get("/myquestion/edit/{question}", [MyQuestionController::class, "edit"])->name("myquestion.edit")->middleware('checkMyQuestion');
 
         Route::post("/myquestion/update/{question}", [MyQuestionController::class, "update"])->name("myquestion.update")->middleware("checkMyQuestion");
+        Route::get("/myquestion/delete/{question}", [MyQuestionController::class, "destroy"])->name("myquestion.destroy")->middleware("checkMyQuestion");
 
 
         // Halaman tampilan list pemecahan error user

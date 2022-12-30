@@ -5,6 +5,38 @@
 
 @section("content_frontend")
 
+<style>
+    pre {
+    margin: 0;
+    padding: 16px;
+    background-color: #2e2f30;
+    border-radius: 3px;
+    }
+
+    code {
+        font-family: Consolas, "Courier New", monospace;
+        font-size: 14px;
+        color: white;
+    }
+
+    code span {
+        color: #E44B23;
+    }
+
+    code.xml {
+        color: #f0d53c !important;
+    }
+
+    code.html {
+        color: #E44B23;
+    }
+
+    code.css {
+        color: #563D7C;
+    }
+
+</style>
+
 
 <section class="section">
     <div class="container">
@@ -20,9 +52,9 @@
         <div class="mt-6">
             <div class="px-6 py-7 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-full mt-4">
 
-                @if($question->gambar_path)
+                @if($question->thumbnail_path)
                     <figure class="mb-6">
-                        <img src="{{ asset("assets/images/imagerror.png") }}" alt="imagerror" class="rounded-lg w-full object-cover h-[600px]">
+                        <img src="{{ asset("storage/" . $question->thumbnail_path) }}" alt="imagerror" class="rounded-lg w-full object-cover h-[600px]">
                     </figure>
                 @endif
 
@@ -44,7 +76,7 @@
                     </h3>
                 </div>
 
-                <p class="text-\[16px] mt-2">Created at <span class="span font-bold">{{ Carbon\Carbon::parse($question->created_at)->diffForHumans() }}</span></p>
+                <p class="text-\[16px]">Created at <span class="span font-bold">{{ Carbon\Carbon::parse($question->created_at)->diffForHumans() }}</span></p>
 
                 <div class="mt-4">
                     <div class="flex items-center justify-between">

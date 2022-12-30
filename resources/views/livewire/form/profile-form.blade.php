@@ -157,7 +157,7 @@ x-data="{
         <div class="mb-10 w-[48%]">
             <label for="photo" class="block text-md font-medium leading-5 text-slate-700 justify-self-start mb-4"><span class="span">Photo</span> Profile</label>
             <div class="relative shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] p-4 rounded-lg active:border border-red-primary transition duration-200">
-                <input type="file" wire:model="photo" id="photo" value="{{ old('photo') }}" x-model="photo" class="pointer-events-none" style="color: white;" placeholder="Your photo..." >
+                <input type="file" wire:model="photo" id="photo" value="{{ old('photo') }}" x-model="photo" class="pointer-events-none" placeholder="Your photo..." >
                 <span x-on:click="photo.click()" class="absolute cursor-pointer text-center flex items-center justify-center right-0 top-0 bottom-0 bg-red-primary text-white w-32 rounded-lg hover:text-slate-800">
                     Upload
                 </span>

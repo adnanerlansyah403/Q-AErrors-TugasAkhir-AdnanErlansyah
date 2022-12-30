@@ -7,6 +7,7 @@ use App\Models\Question;
 use App\Models\UserCommentQuestion;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class QuestionController extends Controller
 {
@@ -51,7 +52,8 @@ class QuestionController extends Controller
         $validation = $request->validate([
             'title' => 'required|min:5|max:255',
             'category' => 'required|min:1',
-            'description' => 'required'
+            'description' => 'required',
+            'thumbnail' => 'required|max:1024'
         ], [
             'title.required' => 'Title is required',
             'category.required' => 'Category is required',
@@ -60,7 +62,16 @@ class QuestionController extends Controller
             'category.min' => 'Category must be at least 1 character',
             'description.min' => 'Description must be at least 5 characters',
             'title.max' => 'Title cannot be longer than 255 characters',
+            'thumbnail.required' => 'Thumbnail is required',
+            'thumbnail.mimes' => 'Thumbnail must be an image',
+            'thumbnail.max' => 'Size Thumbnail cannot be longer than 1024 characters'
         ]);
+
+        if ($request->hasFile('thumbnail')) {
+            $thumbnail_originalname = $request->file('thumbnail')->getClientOriginalName();
+            $thumbnail_path = '/' . $request->file('thumbnail')->store('thumbnails_question', 'public');
+            $thumbnail_link = request()->getSchemeAndHttpHost() . '/' . $thumbnail_path;
+        }
 
         $question = Question::query()->create([
             "title" => ucfirst($request->input("title")),
@@ -68,6 +79,9 @@ class QuestionController extends Controller
             "description_editor" => $request->input("description"),
             "description_original" => strip_tags($request->input("description")),
             "category_id" => $request->input("category"),
+            "thumbnail_originalname" => isset($thumbnail_originalname) ? $thumbnail_originalname : null,
+            "thumbnail_path" => isset($thumbnail_path) ? $thumbnail_path : null,
+            "thumbnail_link" => isset($thumbnail_link) ? $thumbnail_link : null,
             "user_id" => auth()->id()
         ]);
 

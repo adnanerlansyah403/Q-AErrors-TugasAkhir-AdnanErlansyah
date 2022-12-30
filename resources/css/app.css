@@ -42,10 +42,11 @@
 
     input[type="file"]::-webkit-file-upload-button {
         visibility: hidden;
+        display: none;
     }
 
     input[type="file"]::before {
-        content: 'Masukkan File Gambar Profile';
+        /* content: 'Masukkan File Gambar Profile'; */
         color: black;
         display: inline-block;
         background: none;

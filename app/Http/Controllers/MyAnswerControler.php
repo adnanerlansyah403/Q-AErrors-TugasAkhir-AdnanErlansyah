@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class MyAnswerControler extends Controller
 {
@@ -60,6 +61,8 @@ class MyAnswerControler extends Controller
 
     public function destroy(Answer $answer)
     {
+        Storage::disk("public")->exists($answer->thumbnail_path) ? Storage::disk("public")->delete($answer->thumbnail_path) : false;
+
         $answer->delete();
 
         return redirect()->route('users.myanswer.index')->with("success", "Your answer has been deleted");

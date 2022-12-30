@@ -35,11 +35,19 @@
         <div class="w-full mt-6 flex flex-wrap items-center gap-6">
             @forelse ($questions as $question)
                 <div class="card-item gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-[49%] h-max">
-                    <a href="{{ route("errors.searcherror.show", $question) }}" class="text-md font-bold mb-1">{{ $question->title }}</a>
-                    <h3 class="font-semibold text-[16px]">
-                        Category: 
-                        <span class="span">Coding</span>
-                    </h3>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <a href="{{ route("errors.searcherror.show", $question) }}" class="text-md font-bold mb-1">{{ $question->title }}</a>
+                            <h3 class="font-semibold text-[16px]">
+                                Category: 
+                                <span class="span">Coding</span>
+                            </h3>
+                        </div>
+                        <a href="{{ route("users.myquestion.destroy", $question) }}" class="text-md w-10 h-10 flex items-center justify-center rounded-lg text-white bg-red-primary hover:bg-slate-800
+                        transition duration-200 ease-in-out">
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </a>
+                    </div>
                     <p class="text-[18px] text-slate-500 mt-6">
                         {{ $question->description }}
                     </p>
