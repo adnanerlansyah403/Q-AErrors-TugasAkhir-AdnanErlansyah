@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('photo_link')->nullable(); // eg 'http://localhost/storage/photo_profile_user/photo.png'
             $table->string('profession')->nullable();
             $table->string('address')->nullable();
+            $table->text("bio")->nullable();
             $table->rememberToken();
 
             $table->foreign('role_id')->references('id')->on('roles');

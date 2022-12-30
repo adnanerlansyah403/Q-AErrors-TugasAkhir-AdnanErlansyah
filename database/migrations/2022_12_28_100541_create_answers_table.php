@@ -19,10 +19,12 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->index();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('description')->nullable();
+            $table->text('description_editor')->nullable();
+            $table->text('description_original')->nullable();
             $table->string('thumbnail_originalname')->nullable();
             $table->string('thumbnail_path')->nullable();
             $table->string('thumbnail_link')->nullable();
+            $table->boolean("status")->default(false);
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

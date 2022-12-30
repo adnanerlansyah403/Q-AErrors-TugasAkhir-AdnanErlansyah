@@ -20,7 +20,7 @@ x-data="{
             <span class="span">U</span>s
         </h1>
 
-        <form action="{{ route("auth.register") }}" method="POST" class="w-full">
+        <form action="{{ route("auth.register") }}" method="POST" class="w-full" enctype="multipart/form-data">
             @csrf
 
 
@@ -94,6 +94,13 @@ x-data="{
                     <label for="address" class="block text-md font-medium leading-5 text-slate-700 justify-self-start mb-4"><span class="span">A</span>lamat</label>
                     <div class="shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] p-4 rounded-lg active:border border-red-primary transition duration-200">
                         <textarea name="address" id="address" class="w-full" rows="10"></textarea>
+                    </div>
+                </div>
+
+                <div class="-mt-4 mb-10 w-full">
+                    <label for="bio" class="block text-md font-medium leading-5 text-slate-700 justify-self-start mb-4"><span class="span">B</span>io</label>
+                    <div class="shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] p-4 rounded-lg active:border border-red-primary transition duration-200">
+                        <textarea name="bio" id="bio" class="w-full" rows="10"></textarea>
                     </div>
                 </div>
             </div>

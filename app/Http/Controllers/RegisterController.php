@@ -43,15 +43,27 @@ class RegisterController extends Controller
             "address.required" => "Alamat wajib di isi.",
         ]);
 
+        // dd($request->file("photo"), $request->all());
+
+        if ($request->hasFile("photo")) {
+            $photo_originalname = $request->file('photo')->getClientOriginalName();
+            $photo_path = '/' . $request->file('photo')->store('photos_user_profile', 'public');
+            $photo_link = request()->getSchemeAndHttpHost() . '/' . $photo_path;
+        }
+
         $user = User::query()->create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'username' => $request->input('username'),
-            'password' => bcrypt($request->input('password')),
+            'password' => $request->input('password'),
             'birthdate' => $request->date('birthdate'),
             'gender' => $request->input('gender'),
             'profession' => $request->input('profession'),
             'address' => $request->input('address'),
+            'bio' => $request->input('bio'),
+            "photo_originalname" => isset($photo_originalname) ? $photo_originalname : null,
+            "photo_path" => isset($photo_path) ? $photo_path : null,
+            "photo_link" => isset($photo_link) ? $photo_link : null,
             'role_id' => 1,
         ]);
 

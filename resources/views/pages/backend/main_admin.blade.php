@@ -37,6 +37,10 @@
 <body class="bg-gray-200">
     <style>
 
+      input {
+        border: 1px solid gray;
+      }
+
       /* Compiled dark classes from Tailwind */
           .dark .dark\:divide-gray-700 > :not([hidden]) ~ :not([hidden]) {
             border-color: rgba(55, 65, 81);
@@ -168,6 +172,10 @@
             }        
         }
       </style>
+
+        {{-- Livewire Styles --}}
+        @livewireStyles
+
 <div x-data="setup()" :class="{ 'dark': isDark }">
 
     @if (session()->has('success'))
@@ -214,6 +222,9 @@
       </div>
     </div>
   </div>    
+
+  {{-- Livewire Scripts --}}
+  @livewireScripts
 
   <script>
     const setup = () => {

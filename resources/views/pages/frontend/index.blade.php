@@ -71,9 +71,9 @@
                             {{ $review->message }}
                         <span class="span text-lg">"</span></p>
                         <div class="flex items-center gap-4 mt-4">
-                            <figure>
-                                <img src="{{ asset("assets/images/taylor.png") }}" alt="" width="50" height="50">
-                            </figure>
+                            @if($review->user->photo_path)
+                                <img src="{{ asset( 'storage/' . $review->user->photo_path) }}" width="40" height="40" alt="photoprofile" class="rounded-full">
+                            @endif
                             @php
                                 $fullName = explode(' ', $review->user->name);
                             @endphp
@@ -116,7 +116,7 @@
 
         <h1 class="text-lg text-center"> <span class="span">C</span>ontact</h1>
 
-        <div class="mt-10 mb-16 flex justify-between flex-wrap gap-9">
+        <div class="mt-10 mb-16 flex justify-between flex-wrap gap-24">
             <div class="left-side">
                 <img src="{{ asset("assets/images/contact.svg") }}" width="625" height="475" alt="">
             </div>

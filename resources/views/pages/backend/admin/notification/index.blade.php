@@ -37,37 +37,48 @@
                             <th class="px-4 py-3">Email</th>
                             <th class="px-4 py-3">Masalah</th>
                             <th class="px-4 py-3">Jawaban Masalah</th>
+                            <th class="px-4 py-3">Status</th>
                             <th class="px-4 py-3">Actions</th>
                           </tr>
                         </thead>
                         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                          <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3">
-                              <div class="flex items-center text-sm">
-                                <div>
-                                  <p class="font-semibold">Hans Burger</p>
-                                  <p class="text-xs text-gray-600 dark:text-gray-400">Fullstack Developer</p>
+                          @forelse ($answers as $a)
+                            <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
+                              <td class="px-4 py-3">
+                                <div class="flex items-center text-sm">
+                                  <div>
+                                    <p class="font-semibold">{{ $a->user->name }}</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400">{{ $a->user->profession }}</p>
+                                  </div>
                                 </div>
-                              </div>
-                            </td>
-                            <td class="px-4 py-3 text-sm">hans@gmail.com</td>
-                            <td class="px-4 py-3 text-sm">Bagaimana cara membuat menggunakan env di nodejs</td>
-                            <td class="px-4 py-3 text-xs">
-                              Pertama2 anda harus menginstall dotenv terlebih dahulu di nodejs agar env yang anda ingin pakai bisa terdeteksi
-                            </td>
-                            <td class="px-4 py-3 flex items-center gap-2">
-                              <a href="{{ route("admin.notification.fixmasalah.show") }}" class="text-white bg-blue-800 p-2 rounded-lg">
-                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5C17 19.5 21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="currentColor"/>
-                                    </svg>                      
-                              </a>
-                              <button class="text-white bg-red-600 p-2 rounded-lg">
-                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM8 9H16V19H8V9ZM15.5 4L14.5 3H9.5L8.5 4H5V6H19V4H15.5Z" fill="currentColor"/>
-                                    </svg>                      
-                              </button>
-                            </td>
-                          </tr>
+                              </td>
+                              <td class="px-4 py-3 text-sm">{{ $a->user->email }}</td>
+                              <td class="px-4 py-3 text-sm">{{ $a->title }}</td>
+                              <td class="px-4 py-3 text-xs">
+                                {{ Str::limit($a->description_original, 80) }}
+                              </td>
+                              <td class="px-4 py-3 text-sm">
+                                @if ($a->status)
+                                  <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100 text-[14px]">Approved</span>
+                                @else
+                                  <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100 text-[14px]">Not Approved</span>
+                                @endif
+                              <td class="px-4 py-3 flex items-center gap-2">
+                                <a href="{{ route("admin.notification.fixmasalah.show", $a) }}" class="text-white bg-blue-800 p-2 rounded-lg">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5C17 19.5 21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="currentColor"/>
+                                      </svg>                      
+                                </a>
+                                <a href="{{ route("admin.notification.fixmasalah.destroy", $a) }}" class="text-white bg-red-600 p-2 rounded-lg">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM8 9H16V19H8V9ZM15.5 4L14.5 3H9.5L8.5 4H5V6H19V4H15.5Z" fill="currentColor"/>
+                                      </svg>                      
+                                </a>
+                              </td>
+                            </tr>
+                          @empty
+                            
+                          @endforelse
                         </tbody>
                       </table>
                     </div>
@@ -87,54 +98,45 @@
                           </tr>
                         </thead>
                         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                          <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                            <td class="px-4 py-3">
-                              <div class="flex items-center text-sm">
-                                <div>
-                                  <p class="font-semibold">Adnan Erlansyah</p>
-                              </div>
-                            </td>
-                            <td class="px-4 py-3 text-sm">Wow, Website nya sangat membantu sekali untuk para programmers</td>
-                            <td class="px-4 py-3 text-sm">
-                                
-                                <div class="flex items-center gap-2">
-
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF9529" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" fill="#FF9529"/>
-                                </svg>
-
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF9529" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" fill="#FF9529"/>
-                                </svg>
-
-
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF9529" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" fill="#FF9529"/>
-                                </svg>
-                                
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF9529" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" fill="#FF9529"/>
-                                </svg>
-                                
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF9529" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" fill="#FF9529"/>
-                                </svg>
+                          @forelse ($reviews as $r)
+                            <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
+                              <td class="px-4 py-3">
+                                <div class="flex items-center text-sm">
+                                  <div>
+                                    <p class="font-semibold">{{ $r->user->name }}</p>
                                 </div>
-                                {{-- <span class="text-blue-800">Rates</span> --}}
-                            </td>
-                            <td class="px-4 py-3 flex items-center gap-2">
-                              <a href="{{ route("admin.notification.reviews.show") }}" class="text-white bg-blue-800 p-2 rounded-lg">
-                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5C17 19.5 21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="currentColor"/>
-                                    </svg>                      
-                              </a>
-                              <button class="text-white bg-red-600 p-2 rounded-lg">
-                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM8 9H16V19H8V9ZM15.5 4L14.5 3H9.5L8.5 4H5V6H19V4H15.5Z" fill="currentColor"/>
-                                    </svg>                      
-                              </button>
-                            </td>
-                          </tr>
+                              </td>
+                              <td class="px-4 py-3 text-sm">
+                                {{ $r->message }}
+                              </td>
+                              <td class="px-4 py-3 text-sm">
+                                  
+                                  <div class="flex items-center gap-2">
+
+                                    @for ($i = 0; $i < $r->rating; $i++)
+                                      <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF9529" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" fill="#FF9529"/>
+                                    </svg>
+                                    @endfor
+
+                                  </div>
+                              </td>
+                              <td class="px-4 py-3 flex items-center gap-2">
+                                <a href="{{ route("admin.notification.reviews.show", $r) }}" class="text-white bg-blue-800 p-2 rounded-lg">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5C17 19.5 21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12C7 9.24 9.24 7 12 7C14.76 7 17 9.24 17 12C17 14.76 14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="currentColor"/>
+                                      </svg>                      
+                                </a>
+                                <a href="{{ route("admin.notification.reviews.destroy", $r) }}" class="text-white bg-red-600 p-2 rounded-lg">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM8 9H16V19H8V9ZM15.5 4L14.5 3H9.5L8.5 4H5V6H19V4H15.5Z" fill="currentColor"/>
+                                      </svg>                      
+                                </a>
+                              </td>
+                            </tr>
+                          @empty
+                            
+                          @endforelse
                         </tbody>
                       </table>
                     </div>

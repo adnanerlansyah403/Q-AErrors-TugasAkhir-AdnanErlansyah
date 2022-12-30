@@ -26,7 +26,7 @@
                 Successfully
             </div>
         </div>
-        <p class="mt-2 text-xs text-white">
+        <p class="mt-2 text-[18px] text-white">
             {{ $message }}
         </p>
     @endif

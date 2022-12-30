@@ -11,11 +11,18 @@
 
         <div class="flex items-center gap-10">
             <div class="flex items-center gap-6 px-6 py-7 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-max">
-                <a href="{{ route("errors.searcherror.index") }}" class="{{ $currentRoute == 'errors.searcherror.index' ? 'bg-slate-800 outline-none' : '' }} font-bold px-6 py-2 rounded-lg hover:bg-slate-800 hover:text-white transition duration-200 hover:outline-none" style="{{ $currentRoute == 'errors.searcherror.index' ? 'color: white;' : '' }}">
-                    <span class="span">N</span>ew
-                </a>
-                <a href="{{ route("errors.searcherror.notanswer.index") }}" class="{{ $currentRoute == 'errors.searcherror.notanswer.index' ? 'bg-slate-800' : '' }} font-bold outline outline-1 outline-red-primary px-6 py-2 rounded-lg hover:bg-slate-800 hover:text-white transition duration-200 hover:outline-none" style="{{ $currentRoute == 'errors.searcherror.notanswer.index' ? 'color: white;' : '' }}">
-                    <span class="span">Not</span> Answer
+                <div class="flex items-center gap-2">
+                    {{-- <ion-icon name="search-circle-outline" class="text-lg"></ion-icon> --}}
+                    <a href="{{ route("errors.searcherror.index") }}" class="{{ $currentRoute == 'errors.searcherror.index' ? 'bg-slate-800 outline-none' : '' }} font-bold px-6 py-2 rounded-lg hover:bg-slate-800 hover:text-white transition duration-200 hover:outline-none" style="{{ $currentRoute == 'errors.searcherror.index' ? 'color: white;' : '' }}">
+                        <span class="span">N</span>ew
+                    </a>
+                    <a href="{{ route("errors.searcherror.notanswer.index") }}" class="{{ $currentRoute == 'errors.searcherror.notanswer.index' ? 'bg-slate-800' : '' }} font-bold outline outline-1 outline-red-primary px-6 py-2 rounded-lg hover:bg-slate-800 hover:text-white transition duration-200 hover:outline-none" style="{{ $currentRoute == 'errors.searcherror.notanswer.index' ? 'color: white;' : '' }}">
+                        <span class="span">Not</span> Answer
+                    </a>
+                </div>
+                <a href="{{ route("errors.searcherror.create") }}" class="flex items-center gap-2 font-bold outline outline-1 outline-red-primary px-6 py-2 rounded-lg hover:bg-slate-800 hover:text-white transition duration-200 hover:outline-none">
+                    <ion-icon name="create-outline" class="text-lg"></ion-icon>
+                    <span class="span">Tanyakan</span> Masalah
                 </a>
             </div>
             <form {{ route("errors.searcherror.index") }} class="flex-1 flex items-center gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-full">
@@ -31,14 +38,14 @@
 
         <div class="w-full mt-6 flex flex-wrap items-center gap-6">
             @forelse ($questions as $question)
-                <div class="card-item gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-[49%] h-[300px]">
+                <div class="card-item gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-[49%] h-max">
                     <a href="{{ route("errors.searcherror.show", $question) }}" class="text-md font-bold mb-1">{{ $question->title }}</a>
                     <h3 class="font-semibold text-[16px]">
                         Category: 
                         <span class="span">Coding</span>
                     </h3>
                     <p class="text-[18px] text-slate-500 mt-6">
-                        {{ $question->description }}
+                        {{  Str::limit($question->description_original, 100)  }}
                     </p>
                     <div class="flex justify-between items-center mt-6">
                         <div>
@@ -59,6 +66,10 @@
                     <h1 class="text-md font-bold mt-4">Still No <span class="span">Data</span></h1>
                 </div>
             @endforelse
+        </div>
+
+        <div class="my-10">
+            {{ $questions->links("pagination::tailwind") }}
         </div>
 
     </div>

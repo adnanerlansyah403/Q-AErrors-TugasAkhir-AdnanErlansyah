@@ -21,7 +21,7 @@ x-data="{
             <div class="mb-10">
                 <label for="email" class="block text-md font-medium leading-5 text-slate-700 justify-self-start mb-4"><span class="span">E</span>mail</label>
                 <div class="shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] p-4 rounded-lg active:border border-red-primary transition duration-200">
-                    <input type="email" name="email" id="email" class="" value="{{ old('email') }}" class="" placeholder="Your email..." >
+                    <input type="email" name="email" id="email" class="" value="{{ old('email') }}" class="" placeholder="Your email..." style="width: 100%;">
                 </div>
             </div>
 

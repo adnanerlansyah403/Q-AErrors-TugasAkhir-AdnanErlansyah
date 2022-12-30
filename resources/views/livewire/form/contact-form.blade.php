@@ -39,6 +39,25 @@
         </div>
 
         <div class="mb-10">
+            <label for="email" class="block text-md font-medium leading-5 text-slate-700 justify-self-start mb-4"><span class="span">E</span>mail</label>
+            <div class="shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] p-4 rounded-lg active:border border-red-primary transition duration-200 @error('email') border border-red-primary @enderror">
+                <input type="email" name="email" id="email" class="" value="{{ old('email') }}" class="" placeholder="Your email..." class="w-full ">
+            </div>
+            @error('email') 
+                <div class="flex items-center gap-2 mt-2">
+                    <svg class="h-6 w-6 text-red-primary cursor-pointer"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span class="text-red-400 font-semibold">{{ $message }}</span>
+                </div> 
+            @enderror
+        </div>
+
+        <div class="mb-10">
             <label for="message" class="block text-md font-medium leading-5 text-slate-700 justify-self-start mb-4"><span class="span">M</span>essage</label>
             <textarea name="message" id="" class="shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] p-4 rounded-lg active:outline outline-1  @error('message') border outline-red-primary @enderror transition duration-200 w-full" rows="10"></textarea>
             @error('message') 

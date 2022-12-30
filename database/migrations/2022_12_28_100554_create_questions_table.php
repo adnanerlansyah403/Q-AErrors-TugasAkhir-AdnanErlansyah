@@ -19,7 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('description')->nullable();
+            $table->text('description_editor')->nullable();
+            $table->text('description_original')->nullable();
             $table->enum('level', ['easy', 'medium', 'hard'])->nullable();
             $table->boolean('status')->default(0);
             $table->string('thumbnail_originalname')->nullable();

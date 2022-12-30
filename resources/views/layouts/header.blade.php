@@ -38,7 +38,7 @@ class="py-[20px] container flex items-center justify-between w-full active">
     <div class="text-md flex items-center gap-4">
         @if (Auth::user())
             @if(Auth::user()->role->id == 1)
-                <a href="{{ route("users.myquestion.index") }}">D<span class="span">ashboard</span></a>
+                <a href="{{ route("users.profile") }}">D<span class="span">ashboard</span></a>
                 
             @else
                 <a href="{{ route("admin.dashboard") }}">D<span class="span">ashboard</span></a>

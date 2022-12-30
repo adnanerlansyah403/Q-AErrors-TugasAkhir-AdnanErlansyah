@@ -15,11 +15,13 @@ class ContactForm extends Component
 
     public $message = "";
     public $name = "";
+    public $email = "";
     public $exception = null;
 
     protected $rules = [
         'message' => 'required|min:6|max:255',
         'name' => 'required|max:5',
+        'email' => 'required|email:rfc,dns|max:255'
     ];
 
     protected $messages = [
@@ -28,6 +30,9 @@ class ContactForm extends Component
         'message.max' => 'Message must be at most 255 characters',
         'name.required' => 'Name is required',
         'name.max' => 'Name must be less than 5',
+        'email.required' => 'Email is required',
+        'email.email' => 'Email is not valid',
+        'email.max' => 'Email must be at most 255 characters',
     ];
 
     public function render()
@@ -50,9 +55,10 @@ class ContactForm extends Component
         $review = Contact::create([
             "message" => $validatedData['message'],
             "name" => $validatedData['name'],
+            "email" => $validatedData["email"]
         ]);
 
-        $this->reset(['message', 'name']);
+        $this->reset(['message', 'name', 'email']);
 
         return redirect()->route('reviews.create')->with('success', 'Your message has been submitted!');
     }

@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Admin 1',
                 'email' => 'admin1@example.com',
                 'username' => 'admin1',
-                'password' => bcrypt('12345'),
+                'password' => '12345',
                 'role_id' => 2,
                 'gender' => 'l',
                 'address' => 'Kp.Harapan Baru RT 01/ RW 09'
@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Admin 2',
                 'email' => 'admin2@example.com',
                 'username' => 'admin2',
-                'password' => bcrypt('12345'),
+                'password' => '12345',
                 'role_id' => 2,
                 'gender' => 'l',
                 'address' => 'Kp.Harapan Baru RT 01/ RW 08'
@@ -73,7 +73,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Super Admin',
                 'email' => 'superadmin@example.com',
                 'username' => 'superadmin',
-                'password' => bcrypt('12345'),
+                'password' => '12345',
                 'role_id' => 3,
                 'gender' => 'l',
                 'address' => 'Kp.Harapan Baru RT 01/ RW 7'
@@ -82,7 +82,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'User',
                 'email' => 'user@example.com',
                 'username' => 'user',
-                'password' => bcrypt('12345'),
+                'password' => '12345',
                 'role_id' => 1,
                 'gender' => 'l',
                 'address' => 'Kp.Harapan Baru RT 01/ RW 10'
@@ -91,7 +91,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'User 2',
                 'email' => 'user2@example.com',
                 'username' => 'user2',
-                'password' => bcrypt('12345'),
+                'password' => '12345',
                 'role_id' => 1,
                 'gender' => 'l',
                 'address' => 'Kp.Harapan Baru RT 01/ RW 11'
@@ -100,16 +100,16 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Fulan Akhi',
                 'email' => 'fulan@example.com',
                 'username' => 'fulan',
-                'password' => bcrypt('12345'),
+                'password' => '12345',
                 'role_id' => 1,
-                'gender' => 'p',
+                'gender' => 'l',
                 'address' => 'Kp.Harapan Baru RT 01/ RW 12'
             ],
             [
                 'name' => 'Fulanah Ukhti',
                 'email' => 'fulanah@example.com',
                 'username' => 'fulanah',
-                'password' => bcrypt('12345'),
+                'password' => '12345',
                 'role_id' => 1,
                 'gender' => 'p',
                 'address' => 'Kp.Harapan Baru RT 01/ RW 13'
@@ -197,14 +197,16 @@ class DatabaseSeeder extends Seeder
             [
                 'title' => 'What is Laravel?',
                 'slug' => Str::slug('What is Laravel?'),
-                'description' => "I'm still confused about what's the best way to get started with Laravel.",
+                'description_editor' => "I'm still confused about what's the best way to get started with Laravel.",
+                'description_original' => "I'm still confused about what's the best way to get started with Laravel.",
                 'user_id' => 4,
                 'category_id' => 8,
             ],
             [
                 'title' => 'What is ReactJS?',
                 'slug' => Str::slug('What is ReactJS?'),
-                'description' => "I'm still confused about what's the best way to get started with ReactJS.",
+                'description_editor' => "I'm still confused about what's the best way to get started with ReactJS.",
+                'description_original' => "I'm still confused about what's the best way to get started with ReactJS.",
                 'user_id' => 4,
                 'category_id' => 9,
                 'status' => 1
@@ -212,7 +214,8 @@ class DatabaseSeeder extends Seeder
             [
                 'title' => 'What is VueJS?',
                 'slug' => Str::slug('What is VueJS?'),
-                'description' => "I'm still confused about what's the best way to get started with VueJS.",
+                'description_editor' => "I'm still confused about what's the best way to get started with VueJS.",
+                'description_original' => "I'm still confused about what's the best way to get started with VueJS.",
                 'user_id' => 5,
                 'category_id' => 10,
                 'status' => 1
@@ -220,7 +223,8 @@ class DatabaseSeeder extends Seeder
             [
                 'title' => 'What is NextJS?',
                 'slug' => Str::slug('What is NextJS?'),
-                'description' => "I'm still confused about what's the best way to get started with NextJS.",
+                'description_editor' => "I'm still confused about what's the best way to get started with NextJS.",
+                'description_original' => "I'm still confused about what's the best way to get started with NextJS.",
                 'user_id' => 5,
                 'category_id' => 11,
             ]
@@ -234,28 +238,32 @@ class DatabaseSeeder extends Seeder
             [
                 'title' => 'The explanation of laravel',
                 'slug' => Str::slug('The explanation of laravel'),
-                'description' => "Laravel is a free, open-source PHP web framework used for web application development. It follows the model-view-controller (MVC) architectural pattern and provides a range of features such as routing, authentication, and database management tools. Laravel is designed to make it easier for developers to write and maintain PHP code, and to build robust, scalable applications.",
+                'description_editor' => "Laravel is a free, open-source PHP web framework used for web application development. It follows the model-view-controller (MVC) architectural pattern and provides a range of features such as routing, authentication, and database management tools. Laravel is designed to make it easier for developers to write and maintain PHP code, and to build robust, scalable applications.",
+                'description_original' => "Laravel is a free, open-source PHP web framework used for web application development. It follows the model-view-controller (MVC) architectural pattern and provides a range of features such as routing, authentication, and database management tools. Laravel is designed to make it easier for developers to write and maintain PHP code, and to build robust, scalable applications.",
                 'user_id' => 6,
                 'category_id' => 8,
             ],
             [
                 'title' => 'The explanation of reactjs',
                 'slug' => Str::slug('The explanation of reactjs'),
-                'description' => "React is a JavaScript library for building user interfaces. It was developed by Facebook, and is often used for building single-page applications and mobile applications.",
+                'description_editor' => "React is a JavaScript library for building user interfaces. It was developed by Facebook, and is often used for building single-page applications and mobile applications.",
+                'description_original' => "React is a JavaScript library for building user interfaces. It was developed by Facebook, and is often used for building single-page applications and mobile applications.",
                 'user_id' => 6,
                 'category_id' => 9,
             ],
             [
                 'title' => 'Explore more about VueJS',
                 'slug' => Str::slug('Explore more about VueJS'),
-                'description' => "Vue.js is a JavaScript framework for building web applications. It was developed by Evan You, and is designed to be lightweight and easy to learn.",
+                'description_editor' => "Vue.js is a JavaScript framework for building web applications. It was developed by Evan You, and is designed to be lightweight and easy to learn.",
+                'description_original' => "Vue.js is a JavaScript framework for building web applications. It was developed by Evan You, and is designed to be lightweight and easy to learn.",
                 'user_id' => 7,
                 'category_id' => 10,
             ],
             [
                 'title' => 'Explore more about NextJS',
                 'slug' => Str::slug('Explore more about NextJS'),
-                'description' => "Next.js is a JavaScript framework for building server-rendered or statically exported React applications. It was developed by Vercel (formerly known as Zeit) and is designed to make it easy for developers to create fast, server-rendered React applications.",
+                'description_editor' => "Next.js is a JavaScript framework for building server-rendered or statically exported React applications. It was developed by Vercel (formerly known as Zeit) and is designed to make it easy for developers to create fast, server-rendered React applications.",
+                'description_original' => "Next.js is a JavaScript framework for building server-rendered or statically exported React applications. It was developed by Vercel (formerly known as Zeit) and is designed to make it easy for developers to create fast, server-rendered React applications.",
                 'user_id' => 7,
                 'category_id' => 11,
             ]

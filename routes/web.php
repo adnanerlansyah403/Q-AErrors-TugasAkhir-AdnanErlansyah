@@ -1,10 +1,19 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\KategoriController as AdminKategoriController;
+use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
+use App\Http\Controllers\Admin\ReviewController as AdminReviewController;
+use App\Http\Controllers\Admin\SuperAdminController;
+use App\Http\Controllers\FixQuestionController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MyAnswerControler;
+use App\Http\Controllers\MyQuestionController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReviewController;
 use App\Models\Answer;
+use App\Models\Contact;
 use App\Models\Question;
 use App\Models\Review;
 use Illuminate\Http\Request;
@@ -77,26 +86,34 @@ Route::prefix("/errors")
 
                 Route::get("/create", [QuestionController::class, "create"])->middleware("auth")->name("create");
 
+                Route::post("/store", [QuestionController::class, "store"])->name("store");
+
                 Route::get("/show/{question}", [QuestionController::class, "show"])->name("show");
 
                 Route::get("/notanswer", [QuestionController::class, 'indexNotAnswer'])->name("notanswer.index");
+
+                // Comment Routes
+                Route::get("/show/{question}/{comment}/comment", [QuestionController::class, 'destroyComment'])
+                    ->name("comment.destroy")
+                    ->middleware("checkCommentUser");
             });
 
 
 
         // Halaman Jawaban Error List
 
-        Route::get("/fixerror", function () {
-            return view("pages.frontend.errors.fixerror.index");
-        })->name("fixerror.index");
+        Route::get("/fixerror", [FixQuestionController::class, 'index'])->name("fixerror.index");
 
-        Route::get("/fixerror/create", function () {
-            return view("pages.frontend.errors.fixerror.create");
-        })->middleware("auth")->name("fixerror.create");
+        Route::get("/fixerror/create", [FixQuestionController::class, "create"])->middleware("auth")->name("fixerror.create");
 
-        Route::get("/fixerror/show", function () {
-            return view("pages.frontend.errors.fixerror.show");
-        })->name("fixerror.show");
+        Route::get("/fixerror/show/{answer}", [FixQuestionController::class, 'show'])
+            ->name("fixerror.show");
+
+
+        Route::get("/fixerror/edit/{answer}", [FixQuestionController::class, 'edit'])
+            ->name("fixerror.edit");
+
+        Route::post("/store", [FixQuestionController::class, "store"])->name("fixerror.store");
     });
 
 
@@ -112,29 +129,29 @@ Route::prefix("/user")
     ->group(function () {
 
         // Halaman tampilan profile user
-        Route::get("/profile", function () {
-            return view("pages.frontend.user.profile");
+        Route::get("/profile", function (Request $request) {
+            return view("pages.frontend.user.profile", compact('request'));
         })->name("profile");
 
         // Halaman tampilan list pertanyaan user
-        Route::get("/myquestion", function () {
-            return view("pages.frontend.user.myquestion.index");
-        })->name("myquestion.index");
+        Route::get("/myquestion", [MyQuestionController::class, "index"])->name("myquestion.index");
 
         // Halaman tampilan edit pertanyaan user
-        Route::get("/myquestion/edit", function () {
-            return view("pages.frontend.user.myquestion.edit");
-        })->name("myquestion.edit");
+        Route::get("/myquestion/edit/{question}", [MyQuestionController::class, "edit"])->name("myquestion.edit")->middleware('checkMyQuestion');
+
+        Route::post("/myquestion/update/{question}", [MyQuestionController::class, "update"])->name("myquestion.update")->middleware("checkMyQuestion");
 
 
         // Halaman tampilan list pemecahan error user
-        Route::get("/myanswer", function () {
-            return view("pages.frontend.user.myquestion.index");
-        })->name("myanswer.index");
+        Route::get("/myanswer", [MyAnswerControler::class, "index"])->name("myanswer.index");
 
-        Route::get("/myanswer/edit", function () {
-            return view("pages.frontend.user.myquestion.edit");
-        })->name("myanswer.edit");
+        Route::get("/myanswer/edit/{answer}", [MyAnswerControler::class, "edit"])
+            ->name("myanswer.edit")
+            ->middleware("checkMyAnswer");
+
+        Route::post("/myanswer/update/{answer}", [MyAnswerControler::class, "update"])->name("myanswer.update")->middleware("checkMyAnswer");
+
+        Route::get("/myanswer/delete/{answer}", [MyAnswerControler::class, "destroy"])->name("myanswer.destroy")->middleware("checkMyAnswer");
     });
 
 Route::prefix("/admin")
@@ -145,71 +162,89 @@ Route::prefix("/admin")
     ->name("admin.")
     ->group(function () {
 
-        Route::get("/dashboard", function () {
-            return view("pages.backend.admin.layouts.partials.index");
-        })->name("dashboard");
+        Route::get("/dashboard", [AdminDashboardController::class, "index"])->name("dashboard");
 
         Route::prefix("/notification")
             ->name("notification.")
             ->group(function () {
 
                 Route::get("/", function () {
-                    return view("pages.backend.admin.notification.index");
+
+                    $answers = Answer::query()->get();
+                    $reviews = Review::query()->get();
+                    $contacts = Contact::query()->get();
+
+                    return view("pages.backend.admin.notification.index", compact("answers", "reviews", "contacts"));
                 })->name("index");
 
                 Route::prefix("/fixmasalah")
                     ->name("fixmasalah.")
                     ->group(function () {
 
-                        Route::get("/show", function () {
-                            return view("pages.backend.admin.notification.fixmasalah.show");
+                        Route::get("/show/{answer}", function (Answer $answer) {
+                            return view("pages.backend.admin.notification.fixmasalah.show", compact("answer"));
                         })->name("show");
+
+                        Route::get("/delete/{answer}", function (Answer $answer) {
+                            // dd($answer);
+                            $answer->delete();
+
+                            return redirect()->route("admin.notification.index")->with('success', 'The review has been deleted.');
+                        })->name("destroy");
+
+                        Route::get("/update/{answer}", function (Answer $answer) {
+
+                            $answer->update([
+                                'status' => 1
+                            ]);
+
+                            return redirect()->route("admin.notification.index")->with('success', 'The answer has been accepted');
+                        })->name("update");
                     });
 
                 Route::prefix("/reviews")
                     ->name("reviews.")
+                    ->controller(AdminReviewController::class)
                     ->group(function () {
 
-                        Route::get("/show", function () {
-                            return view("pages.backend.admin.notification.review.show");
-                        })->name("show");
+                        Route::get("/show/{review}", "show")->name("show");
+
+                        Route::get("/delete/{review}", "destroy")->name("destroy");
                     });
             });
 
+
         Route::prefix("/kategori/errors")
             ->name("kategori.errors.")
+            ->controller(AdminKategoriController::class)
             ->group(function () {
 
-                Route::get("/", function () {
+                Route::get("/", "index")->name("index");
 
-                    return view("pages.backend.admin.kategori.errors.index");
-                })->name("index");
+                Route::get("/create", "create")->name("create");
 
-                Route::get("/create", function () {
+                // Route::post("/store", "store")->name("store");
 
-                    return view("pages.backend.admin.kategori.errors.create");
-                })->name("create");
+                Route::get("/edit/{category}", "edit")->name("edit");
 
-                Route::get("/edit", function () {
-
-                    return view("pages.backend.admin.kategori.errors.edit");
-                })->name("edit");
+                Route::get("/delete/{category}", "destroy")->name("destroy");
             });
 
 
-        Route::get("/profile", function () {
-            return view("pages.backend.admin.profile.index");
-        })->name("profile.index");
+        Route::get("/profile", [AdminProfileController::class, "index"])->name("profile.index");
 
-        Route::get("/list", function () {
-            return view("pages.backend.admin.list");
-        })->name("list.index");
-        Route::get("/list/create", function () {
-            return view("pages.backend.admin.create");
-        })->name("list.create");
-        Route::get("/list/show", function () {
-            return view("pages.backend.admin.show");
-        })->name("list.show");
+        Route::post("/profile/update", [AdminProfileController::class, "update"])->name("profile.update");
+
+        Route::prefix("/list")
+            ->name("list.")
+            ->controller(SuperAdminController::class)
+            ->group(function () {
+
+                Route::get("/", "index")->name("index");
+                Route::get("/list/create", "create")->name("create");
+                Route::post("/list/store", "store")->name("store");
+                Route::get("/list/show/{id}", "show")->name("show");
+            });
     });
 
 // Route Authentication
