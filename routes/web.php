@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\KategoriController as AdminKategoriController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
@@ -162,7 +163,7 @@ Route::prefix("/user")
 Route::prefix("/admin")
     ->middleware([
         'auth',
-        'checkRole:admin'
+        'checkRole:admin,superadmin',
     ])
     ->name("admin.")
     ->group(function () {
@@ -216,6 +217,15 @@ Route::prefix("/admin")
 
                         Route::get("/delete/{review}", "destroy")->name("destroy");
                     });
+
+                Route::prefix("/contacts")
+                    ->name("contacts.")
+                    ->controller(ContactController::class)
+                    ->group(function () {
+
+                        Route::get("/show/{contact}", "show")->name("show");
+                        Route::get("/delete/{contact}", "destroy")->name("destroy");
+                    });
             });
 
 
@@ -241,13 +251,14 @@ Route::prefix("/admin")
         Route::post("/profile/update", [AdminProfileController::class, "update"])->name("profile.update");
 
         Route::prefix("/list")
-            ->name("list.")
             ->controller(SuperAdminController::class)
+            ->name("list.")
+            ->middleware("checkRole:superadmin")
             ->group(function () {
 
                 Route::get("/", "index")->name("index");
                 Route::get("/list/create", "create")->name("create");
-                Route::post("/list/store", "store")->name("store");
+                Route::get("/list/delete/{id}", "destroy")->name("destroy");
                 Route::get("/list/show/{id}", "show")->name("show");
             });
     });

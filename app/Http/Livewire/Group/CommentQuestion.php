@@ -9,6 +9,7 @@ class CommentQuestion extends Component
 
     public $question;
     public $comment;
+    public $countComments = 0;
 
     protected $rules = [
         'comment' => 'required',
@@ -18,7 +19,12 @@ class CommentQuestion extends Component
         'comment.required' => 'Comment is required',
     ];
 
-    protected $listeners = ['refreshComponent' => '$refresh'];
+    // protected $listeners = ['refreshComponent' => '$refresh'];
+
+    public function mount()
+    {
+        $this->countComments = !empty($this->question->comments) ? count($this->question->comments) : 0;
+    }
 
     public function render()
     {
@@ -29,17 +35,19 @@ class CommentQuestion extends Component
     {
         $this->validate();
 
-        $this->question->comments()->create([
+        $question = $this->question->comments()->create([
             'message' => $this->comment,
             'user_id' => auth()->id(),
             'question_id' => $this->question->id,
         ]);
 
-        $this->reset();
+        $this->countComments += 1;
 
-        session()->flash('success', 'Comment has been added');
+        $this->reset(['comment']);
+
+        session()->flash('scs', 'Your comment has been added');
 
 
-        return redirect()->route('errors.searcherror.index')->with('success', 'Your comment has been added');
+        // return redirect()->route('errors.searcherror.index')->with('success', 'Your comment has been added');
     }
 }

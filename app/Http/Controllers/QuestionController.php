@@ -158,6 +158,6 @@ class QuestionController extends Controller
     {
         $comment->delete();
 
-        return redirect()->back()->with('success', 'Your comment has been deleted!');
+        return redirect()->route("errors.searcherror.show", $question)->with('success', 'Your comment has been deleted!');
     }
 }

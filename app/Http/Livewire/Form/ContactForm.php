@@ -20,7 +20,7 @@ class ContactForm extends Component
 
     protected $rules = [
         'message' => 'required|min:6|max:255',
-        'name' => 'required|max:5',
+        'name' => 'required|min:5',
         'email' => 'required|email:rfc,dns|max:255'
     ];
 
@@ -60,6 +60,6 @@ class ContactForm extends Component
 
         $this->reset(['message', 'name', 'email']);
 
-        return redirect()->route('reviews.create')->with('success', 'Your message has been submitted!');
+        return redirect()->route('home')->with('success', 'Your message has been submitted!');
     }
 }

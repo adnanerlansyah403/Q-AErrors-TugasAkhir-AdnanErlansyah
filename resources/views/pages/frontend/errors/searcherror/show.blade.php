@@ -135,7 +135,18 @@
                         <div>
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center gap-4">
-                                    <img src="{{ asset("assets/images/taylor.png") }}" width="40" height="40" alt="photoprofile">
+                                    @if ($c->user->photo_path)
+                                        <img src="{{ asset('storage/' . $c->user->photo_path) }}" width="40" height="40" alt="photoprofile" />
+                                    @else
+                                        @switch($c->user->gender)
+                                            @case('l')
+                                                <img src="{{ asset("assets/images/man1.png") }}" width="40" height="40" alt="photoprofile">
+                                                @break
+                                        
+                                            @default
+                                                <img src="{{ asset("assets/images/woman1.png") }}" width="40" height="40" alt="photoprofile">
+                                        @endswitch
+                                    @endif
                                     <h3 class="font-bold">
                                         <span class="span">{{ $c->user->name }}</span>
                                     </h3>
