@@ -116,7 +116,7 @@
 
         <h1 class="text-lg text-center"> <span class="span">C</span>ontact</h1>
 
-        <div class="mt-10 mb-16 flex justify-between flex-wrap gap-24">
+        <div class="mt-10 mb-16 flex justify-between flex-wrap gap-28">
             <div class="left-side">
                 <img src="{{ asset("assets/images/contact.svg") }}" width="625" height="475" alt="">
             </div>

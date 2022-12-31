@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Question;
 use App\Models\Review;
 use App\Models\Role;
+use App\Models\Todolist;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
@@ -271,6 +272,73 @@ class DatabaseSeeder extends Seeder
 
         foreach ($answers as $a) {
             Answer::query()->create($a);
+        }
+
+        $todolists = [
+            [
+                'task' => 'Membuat Pertanyaan',
+                'type' => 'user',
+                'role_id' => 1,
+            ],
+            [
+                'task' => 'Membalas Pertanyaan',
+                'type' => 'user',
+                'role_id' => 1,
+            ],
+            [
+                'task' => 'Melihat Pertanyaan',
+                'type' => 'user',
+                'role_id' => 1,
+            ],
+            [
+                'task' => 'Share Pemecahan Masalah',
+                'type' => 'user',
+                'role_id' => 1,
+            ],
+            [
+                'task' => 'Menghapus Pertanyaan',
+                'type' => 'user',
+                'role_id' => 1,
+            ],
+            [
+                'task' => 'CRUD Kategori',
+                'type' => 'admin',
+                'role_id' => 2,
+            ],
+            [
+                'task' => 'Korek / Melihat Share Jawaban Masalah',
+                'type' => 'admin',
+                'role_id' => 2,
+            ],
+            [
+                'task' => 'Memberikan Persetujuan untuk Share Jawaban Masalah',
+                'type' => 'admin',
+                'role_id' => 2,
+            ],
+            [
+                'task' => 'Memberikan Persetujuan untuk Review dari User',
+                'type' => 'admin',
+                'role_id' => 2,
+            ],
+            [
+                'task' => 'Membuat Akun Admin',
+                'type' => 'superadmin',
+                'role_id' => 3,
+            ],
+            [
+                'task' => 'Melihat Details Admin',
+                'type' => 'superadmin',
+                'role_id' => 3,
+            ],
+            [
+                'task' => 'Menghapus Admin',
+                'type' => 'superadmin',
+                'role_id' => 3,
+            ]
+        ];
+
+        foreach ($todolists as $todolist) {
+            Todolist::query()->create($todolist);
         }
     }
 }

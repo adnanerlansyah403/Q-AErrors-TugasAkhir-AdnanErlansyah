@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 
-                <p class="text-slate-600 mb-8 text-[20px]">
+                <p class="text-slate-600 mt-4 mb-8 text-[20px]">
                     {!! $answer->description_editor !!}
                 </p>
                 

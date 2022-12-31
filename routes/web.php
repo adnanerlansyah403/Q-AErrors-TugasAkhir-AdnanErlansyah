@@ -272,7 +272,10 @@ Route::get("/login", function () {
     ->middleware('guest')
     ->name("login");
 Route::post("/auth/login", [LoginController::class, "authenticate"])
-    ->middleware('guest')
+    ->middleware([
+        'guest',
+        'throttle:3,1'
+    ])
     ->name("auth.login");
 
 Route::get("/register", function () {

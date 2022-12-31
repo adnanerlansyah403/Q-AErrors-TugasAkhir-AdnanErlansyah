@@ -86,7 +86,7 @@
                     </div>
                 </div>
                 
-                <p class="text-slate-600 mb-4 text-[24px]">
+                <p class="text-slate-600 my-4 text-[24px]">
                     {!! $question->description_editor !!}
                 </p>
                 

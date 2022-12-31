@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('role_id')->nullable();
             $table->string('task');
             $table->string('description')->nullable();
+            $table->enum("type", ["user", "admin", "superadmin"])->default("user");
 
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
 
