@@ -143,56 +143,56 @@ class DatabaseSeeder extends Seeder
         //     Review::query()->create($r);
         // }
 
-        // $categories = [
-        //     [
-        //         'name' => 'PHP',
-        //         'slug' => 'php'
-        //     ],
-        //     [
-        //         'name' => 'JavaScript',
-        //         'slug' => 'javascript'
-        //     ],
-        //     [
-        //         'name' => 'CSS',
-        //         'slug' => 'css'
-        //     ],
-        //     [
-        //         'name' => 'HTML',
-        //         'slug' => 'html'
-        //     ],
-        //     [
-        //         'name' => 'SQL',
-        //         'slug' => 'sql'
-        //     ],
-        //     [
-        //         'name' => 'Database',
-        //         'slug' => 'database'
-        //     ],
-        //     [
-        //         'name' => 'JQuery',
-        //         'slug' => 'jquery'
-        //     ],
-        //     [
-        //         'name' => 'Laravel',
-        //         'slug' => 'laravel'
-        //     ],
-        //     [
-        //         'name' => 'ReactJS',
-        //         'slug' => 'reactjs'
-        //     ],
-        //     [
-        //         'name' => 'VueJS',
-        //         'slug' => 'vuejs'
-        //     ],
-        //     [
-        //         'name' => 'NextJS',
-        //         'slug' => 'nextjs'
-        //     ]
-        // ];
+        $categories = [
+            [
+                'name' => 'PHP',
+                'slug' => 'php'
+            ],
+            [
+                'name' => 'JavaScript',
+                'slug' => 'javascript'
+            ],
+            [
+                'name' => 'CSS',
+                'slug' => 'css'
+            ],
+            [
+                'name' => 'HTML',
+                'slug' => 'html'
+            ],
+            [
+                'name' => 'SQL',
+                'slug' => 'sql'
+            ],
+            [
+                'name' => 'Database',
+                'slug' => 'database'
+            ],
+            [
+                'name' => 'JQuery',
+                'slug' => 'jquery'
+            ],
+            [
+                'name' => 'Laravel',
+                'slug' => 'laravel'
+            ],
+            [
+                'name' => 'ReactJS',
+                'slug' => 'reactjs'
+            ],
+            [
+                'name' => 'VueJS',
+                'slug' => 'vuejs'
+            ],
+            [
+                'name' => 'NextJS',
+                'slug' => 'nextjs'
+            ]
+        ];
 
-        // foreach ($categories as $c) {
-        //     Category::query()->create($c);
-        // }
+        foreach ($categories as $c) {
+            Category::query()->create($c);
+        }
 
         // $questions = [
         //     [

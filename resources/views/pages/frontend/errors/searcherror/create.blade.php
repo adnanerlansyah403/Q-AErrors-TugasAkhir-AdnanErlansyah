@@ -4,14 +4,6 @@
 
 @section("content_frontend")
 
-@push("styles")
-    {{-- <style>
-        .tox-statusbar__branding {
-            display: none;
-        }
-    </style> --}}
-@endpush
-
 <section class="section">
     <div class="container">
         <div class="flex items-center justify-between">
@@ -53,9 +45,9 @@
                     <div class="mb-10 w-[48%]">
                         <label for="category" class="block text-md font-medium leading-5 text-slate-700 justify-self-start mb-4"><span class="span">C</span>ategory</label>
                         <select class="shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] p-4 rounded-lg active:border border-red-primary transition duration-200 w-full" name="category" id="category">
-                            <option selected>-- Choose Category --</option>
+                            <option value="" selected>-- Choose Category --</option>
                             @forelse ($categories as $category)
-                                <option value="{{ old('category', $category->id) }}" selected>{{ $category->name }}</option>
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @empty
                                 
                             @endforelse
@@ -97,9 +89,9 @@
                     </div>
             
                     <div class="w-full">
-                        <label for="category" class="block text-md font-medium leading-5 text-slate-700 justify-self-start mb-4"><span class="span">Q</span>uestion</label>
+                        <label for="description" class="block text-md font-medium leading-5 text-slate-700 justify-self-start mb-4"><span class="span">Q</span>uestion</label>
                         <div class="shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] p-4 rounded-lg active:border border-red-primary transition duration-200 w-full">
-                            <textarea name="description" id="description" rows="10" class="w-full"></textarea>
+                            <textarea name="description" id="description" rows="20" class="w-full"></textarea>
                         </div>
                         @error('description') 
                             <div class="flex items-center gap-2 translate-y-2">

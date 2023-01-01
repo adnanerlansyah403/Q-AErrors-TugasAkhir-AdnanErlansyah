@@ -25,31 +25,52 @@
 
 
         {{-- Card Form --}}
-        <div class="w-full mt-6 flex flex-wrap items-center gap-6">
-            <div class="card-item gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-full">
+        
+        @if($myReview)
+            <div class="w-full mt-6 flex flex-wrap items-center gap-6">
+                <div class="card-item gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-full">
 
-                <h1 class="text-center text-lg font-bold">My <span class="span">Message</span></h1>
+                    <h1 class="text-center text-lg font-bold">My <span class="span">Message</span></h1>
 
-                <p class="text-md text-center italic my-10">
-                    <span class="span text-lg">"</span>
-                    {{ $myReview->message }}
-                    <span class="span text-lg">"</span>
-                </p>
-                
-                <div class="mb-2 flex items-center justify-center">
-                    <a href="{{ route("users.myreview.edit", [
-                            $myReview,
-                            Auth::user()->username
-                        ]) }}" type="submit" href="#notanswer" class="w-max flex items-center gap-2 font-bold outline outline-1 outline-red-primary px-6 py-4 rounded-lg hover:bg-slate-800 hover:text-white transition duration-200 hover:outline-none">
-                        <ion-icon name="pencil" class="text-[20px]"></ion-icon>
-                        <p>
-                            <span class="span">Edit</span> My Review
-                        </p>
-                    </a>
+                    <p class="text-md text-center italic my-10">
+                        <span class="span text-lg">"</span>
+                        {{ $myReview->message }}
+                        <span class="span text-lg">"</span>
+                    </p>
+                    
+                    <div class="mb-2 flex items-center justify-center">
+                        <a href="{{ route("users.myreview.edit", [
+                                $myReview,
+                                Auth::user()->username
+                            ]) }}" type="submit" href="#notanswer" class="w-max flex items-center gap-2 font-bold outline outline-1 outline-red-primary px-6 py-4 rounded-lg hover:bg-slate-800 hover:text-white transition duration-200 hover:outline-none">
+                            <ion-icon name="pencil" class="text-[20px]"></ion-icon>
+                            <p>
+                                <span class="span">Edit</span> My Review
+                            </p>
+                        </a>
+                    </div>
+
                 </div>
-
             </div>
-        </div>
+        @else
+            <div class="w-full mt-6 flex flex-wrap items-center gap-6">
+                <div class="card-item gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-full">
+
+                    <h1 class="text-center text-lg font-bold">
+                        You still not give a 
+                        <span class="span">Review</span>
+                        😔
+                    </h1>                    
+
+                    <div class="flex items-center justify-center my-10">
+                        <a href="{{ route("reviews.create") }}" class="border border-red-primary p-4 rounded-md text-black hover:bg-red-primary hover:text-white font-semibold transition ease-in-out duration-200">
+                            Give it Now 😊
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        @endif
 
 
     </div>

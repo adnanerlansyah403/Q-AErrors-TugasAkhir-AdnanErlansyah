@@ -17,6 +17,15 @@
 
         @stack("styles")
         
+        <style>
+            .tox-statusbar__branding {
+                display: none;
+            }
+            .tox-tinymce {
+                height: 800px !important;
+            }
+        </style>
+        
         {{-- Livewire Styles --}}
         @livewireStyles
 
@@ -76,8 +85,7 @@
         <script>
             tinymce.init({
             selector: '#description',
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table wordcount',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+            plugins: 'anchor autolink charmap preview fullscreen emoticons image link lists media searchreplace table wordcount',
             });
         </script>
         
