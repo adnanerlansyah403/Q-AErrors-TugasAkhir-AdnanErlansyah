@@ -27,6 +27,9 @@ class="py-[20px] container flex items-center justify-between w-full active">
                 <a href="#about"><span class="span">A</span>bout</a>
             </li>
             <li>
+                <a href="#features"><span class="span">F</span>eature</a>
+            </li>
+            <li>
                 <a href="#reviews"><span class="span">R</span>eviews</a>
             </li>
             <li>

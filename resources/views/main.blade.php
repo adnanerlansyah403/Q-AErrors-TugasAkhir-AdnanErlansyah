@@ -24,6 +24,12 @@
             .tox-tinymce {
                 height: 800px !important;
             }
+
+            .topButton.active {
+                bottom: 40px !important;
+                opacity: 1;
+                transition: .2s ease-in-out;
+            }
         </style>
         
         {{-- Livewire Styles --}}
@@ -34,6 +40,7 @@
         x-data="{
             headerActive: false,
             errorActive: false,
+            buttonTop: false,
         }"
     >
 
@@ -75,6 +82,11 @@
 
         @include("layouts.footer")
 
+        <a href="#" class="topButton animate-bounce flex items-center justify-center bg-red-primary text-white w-14 h-14 rounded-full fixed -bottom-20 right-10 opacity-0 transition ease-in-out duration-200">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+            <ion-icon name="arrow-up-outline"></ion-icon>
+        </a>
+
         {{-- IonIcons --}}
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -87,6 +99,28 @@
             selector: '#description',
             plugins: 'anchor autolink charmap preview fullscreen emoticons image link lists media searchreplace table wordcount',
             });
+        </script>
+
+        <script>
+
+            const topButton = document.querySelector('.topButton');
+
+            window.addEventListener('load', function () {
+                if(window.scrollY > 200) {
+                    topButton.classList.add('active');
+                } else {
+                    topButton.classList.remove('active');
+                }
+            });
+
+            window.addEventListener("scroll", function () {
+                if(window.scrollY > 200) {
+                    topButton.classList.add("active");
+                } else {
+                    topButton.classList.remove("active");
+                }
+            })
+
         </script>
         
     </body>

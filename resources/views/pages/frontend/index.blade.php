@@ -9,7 +9,7 @@
     <div class="container flex justify-between">
 
         <div class="left-side">
-            <img src="{{ asset("assets/images/home.svg") }}" width="500" height="475" alt="">
+            <img src="{{ asset("assets/images/home.svg") }}" width="650" height="475" alt="">
         </div>
 
         <div class="right-side max-w-2xl">
@@ -39,7 +39,7 @@
 
 {{-- #ABOUT --}}
 <section class="section" id="about">
-    <div class="container flex justify-between gap-10">
+    <div class="container flex justify-between">
 
         <div class="left-side">
             <img src="{{ asset("assets/images/about.svg") }}" width="650" height="475" alt="">
@@ -54,6 +54,58 @@
             </div>
         </div>
 
+    </div>
+</section>
+
+{{-- #FEATURES --}}
+<section class="section" id="features">
+    <div class="container">
+        <h1 class="text-xl text-center"><span class="span">F</span>eatures </h1>
+    
+        <!-- Box -->
+        <div class="md:flex md:justify-center md:space-x-10 md:px-14">
+          <!-- box-1 -->
+          <div class="h-[450px] mt-16 py-4 px-4 bg-whit bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-110 transition duration-500 mx-auto md:mx-0">
+            <div class="w-sm">
+                <figure class="flex items-center justify-center">
+                    <img class="w-52" src="{{ asset("assets/images/searcherror.svg") }}" alt="" />
+                </figure>
+              <div class="mt-4 text-center">
+                <h1 class="text-lg font-bold"><span class="span">Search</span> Errors</h1>
+                <p class="mt-4 text-gray-600">Pretium lectus quam id leo in vitae turpis. Mattis pellentesque id nibh tortor id.</p>
+                <button class="mt-8 mb-4 py-2 px-14 rounded-full text-white tracking-widest hover transition duration-200">MORE</button>
+              </div>
+            </div>
+          </div>
+    
+          <!-- box-2 -->
+          <div class="h-[450px] mt-16 py-4 px-4 bg-whit bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-110 transition duration-500 mx-auto md:mx-0">
+            <div class="w-sm">
+            <figure class="flex items-center justify-center">
+              <img class="w-52" src="{{ asset("assets/images/knowledge.svg") }}" alt="" />
+            </figure>
+              <div class="mt-4 text-center">
+                <h1 class="text-lg font-bold"><span class="span">Increase </span> Knowledge</h1>
+                <p class="mt-4 text-gray-600">Nunc consequat interdum varius sit amet mattis vulputate enim nulla. Risus feugiat.</p>
+                <button class="mt-8 mb-4 py-2 px-14 rounded-full text-white tracking-widest hover transition duration-200">MORE</button>
+              </div>
+            </div>
+          </div>
+    
+          <!-- box-3 -->
+          <div class="h-[450px] mt-16 py-4 px-4 bg-whit bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-110 transition duration-500 mx-auto md:mx-0">
+            <div class="w-sm">
+            <figure class="flex items-center justify-center">
+              <img class="w-52 h-52" src="{{ asset("assets/images/shareerror.svg") }}" alt="" />
+            </figure>
+              <div class="mt-4 text-center">
+                <h1 class="text-lg font-bold"><span class="span">Share</span> Fix Problem</h1>
+                <p class="mt-4 text-gray-600">Nisl purus in mollis nunc sed id semper. Rhoncus aenean vel elit scelerisque mauris.</p>
+                <button class="mt-8 mb-4 py-2 px-14 rounded-full text-white tracking-widest hover transition duration-200">MORE</button>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
 </section>
 
@@ -116,9 +168,9 @@
 
         <h1 class="text-lg text-center"> <span class="span">C</span>ontact</h1>
 
-        <div class="mt-10 mb-16 flex justify-between flex-wrap gap-28">
+        <div class="-ml-1 mt-10 mb-16 flex justify-between flex-wrap gap-40">
             <div class="left-side">
-                <img src="{{ asset("assets/images/contact.svg") }}" width="625" height="475" alt="">
+                <img src="{{ asset("assets/images/contact.svg") }}" width="650" height="475" alt="">
             </div>
             @livewire("form.contact-form")
         </div>
