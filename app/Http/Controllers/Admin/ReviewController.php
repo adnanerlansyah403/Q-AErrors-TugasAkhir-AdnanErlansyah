@@ -19,6 +19,19 @@ class ReviewController extends Controller
     {
         $review->delete();
 
-        return redirect()->back()->with("success", "The review has been deleted!");
+        return redirect()->route('admin.notification.index')->with("success", "The review has been declined!");
+    }
+
+    public function update(Review $review, Request $request)
+    {
+
+        // dd("test");
+
+        $review->update([
+            'status' => 1
+        ]);
+
+        return redirect()->route('admin.notification.index')
+            ->with('success', 'The review has been accepted!');
     }
 }

@@ -124,6 +124,7 @@
                             <th class="px-4 py-3">Name</th>
                             <th class="px-4 py-3">Message</th>
                             <th class="px-4 py-3">Rating</th>
+                            <th class="px-4 py-3">Status</th>
                             <th class="px-4 py-3">Actions</th>
                           </tr>
                         </thead>
@@ -150,6 +151,13 @@
                                     @endfor
 
                                   </div>
+                              </td>
+                              <td class="px-4 py-3">
+                                @if ($r->status)
+                                  <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100 text-[14px]">Approved</span>
+                                @else
+                                  <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100 text-[14px]">Not Approved</span>
+                                @endif
                               </td>
                               <td class="px-4 py-3 flex items-center gap-2">
                                 <a href="{{ route("admin.notification.reviews.show", $r) }}" class="text-white bg-blue-800 p-2 rounded-lg">

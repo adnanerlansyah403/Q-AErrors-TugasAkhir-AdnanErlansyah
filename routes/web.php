@@ -40,7 +40,10 @@ Route::get('/', function () {
 
     $reviews = Review::select()
         ->distinct()
-        ->where('rating', '>=', 4)->orderBy('rating', 'desc')->latest()->limit(3)->get();
+        ->where('rating', '>=', 4)
+        ->where('status', 1)
+        ->orderBy('rating', 'desc')
+        ->latest()->limit(3)->get();
 
     return view('pages.frontend.index', [
         'reviews' => $reviews
@@ -220,6 +223,8 @@ Route::prefix("/admin")
 
                         Route::get("/show/{review}", "show")->name("show");
 
+                        Route::get("/update/{review}", "update")->name("update");
+
                         Route::get("/delete/{review}", "destroy")->name("destroy");
                     });
 
@@ -279,7 +284,7 @@ Route::get("/login", function () {
 Route::post("/auth/login", [LoginController::class, "authenticate"])
     ->middleware([
         'guest',
-        'throttle:3,1'
+        // 'throttle:3,1'
     ])
     ->name("auth.login");
 

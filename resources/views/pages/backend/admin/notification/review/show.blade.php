@@ -5,8 +5,8 @@
 @section("content_admin")
 
 <div class="mx-6">
-    <h3 class="mt-10"><span class="text-blue-800 font-bold">Admin</span> / Notification / Reviews / Details Review </h3>
-    <h1 class="text-blue-800 text-lg font-bold mt-2">Details Review</h1>    
+    <h3 class="mt-10"><span class="text-blue-800 dark:text-white font-bold">Admin</span> / Notification / Reviews / Details Review </h3>
+    <h1 class="text-blue-800 dark:text-white text-lg font-bold mt-2">Details Review</h1>    
 </div>
 
 
@@ -21,24 +21,14 @@
                         @endif
                     </div>
                     </div>
-                    <div class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
+                    <div class="w-full px-4 lg:order-3 lg:text-right lg:self-center flex items-center gap-2" style="order: 1;">
                         <div class="py-6 px-3 mt-32 sm:mt-0">
+                            <a href="{{ route("admin.notification.reviews.update", $review) }}" class="bg-blue-800 active:bg-blue-800 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150" type="button">
+                                Accept
+                            </a>
                             <a href="{{ route("admin.notification.reviews.destroy", $review) }}" class="bg-red-600 active:bg-red-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150" type="button">
                                 Decline
                             </a>
-                        </div>
-                    </div>
-                    <div class="pointer-events-none cursor-none opacity-0 w-full lg:w-4/12 px-4 lg:order-1">
-                        <div class="flex justify-center py-4 lg:pt-4 pt-8">
-                            <div class="mr-4 p-3 text-center">
-                                <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">22</span><span class="text-sm text-blueGray-400">Friends</span>
-                            </div>
-                            <div class="mr-4 p-3 text-center">
-                                <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">10</span><span class="text-sm text-blueGray-400">Photos</span>
-                            </div>
-                            <div class="lg:mr-4 p-3 text-center">
-                                <span class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">89</span><span class="text-sm text-blueGray-400">Comments</span>
-                            </div>
                         </div>
                     </div>
                     </div>
@@ -60,9 +50,9 @@
                         <div class="mt-6">
                             <h3 class="text-lg font-bold mb-2">Review</h3>
                             <p class="text-lg text-justify leading-relaxed text-blueGray-700 italic">
-                                <span class="font-black text-2xl text-blue-800">"</span>
+                                <span class="font-black text-2xl text-blue-800 dark:text-white">"</span>
                                 {{ $review->message }}
-                                <span class="font-black text-2xl text-blue-800">"</span>
+                                <span class="font-black text-2xl text-blue-800 dark:text-white">"</span>
                             </p>
                         </div>
                     {{-- <a href="#pablo" class="font-normal text-blue-800">Show more</a> --}}

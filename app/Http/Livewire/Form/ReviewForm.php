@@ -56,7 +56,6 @@ class ReviewForm extends Component
 
     public function storeReview()
     {
-        dd("test create");
         try {
             $this->rateLimit(3, 60);
         } catch (TooManyRequestsException $exception) {
@@ -75,7 +74,7 @@ class ReviewForm extends Component
 
         $this->reset(['comment', 'rating']);
 
-        return redirect()->route('home')->with('success', 'Your review has been submitted!');
+        return redirect()->route('home')->with('success', 'Your review has been submitted!, We will check your review first before accepting it.');
     }
 
     public function updateReview()
