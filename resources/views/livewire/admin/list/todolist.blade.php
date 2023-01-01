@@ -10,10 +10,11 @@
     } else {
       $modalName = 'modalTaskUser';
     }
+    // @dd($types[$i]->id)
 
   @endphp
   
-  @if(session()->has('successTodolist'))
+  {{-- @if(session()->has('successTodolist'))
     <div class="alert alert-success active" x-ref="alertTodolist">
         <a id="dismissTodolist" x-on:click="$refs.alertTodolist.classList.remove('active')" class="cursor-pointer font-semibold text-white">
             Dismiss
@@ -31,7 +32,7 @@
         </p>        
     
     </div>
-  @endif
+  @endif --}}
 
     <div class="flex items-center justify-between py-1 text-white dark:text-white">
       <h3 class="text-sm font-semibold">Todolists in 
@@ -48,7 +49,7 @@
     </div>
     <div class="text-sm text-white dark:text-gray-50 mt-2">
       @forelse ($todolists->where('role_id', $types[$i]->id) as $todolist)
-        <div class="flex items-center justify-between bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer" wire:key={{ 'todo-'.$todolist->id }}>
+        <div class="flex items-center justify-between text-black font-semibold bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer" wire:key={{ 'todo-'.$todolist->id }}>
           {{ $todolist->task }}
           @if (Auth::user()->role_id == 3)
             <div>

@@ -2,9 +2,9 @@
     
     @if(session()->has('successModal' . $user))
         <div class="alert alert-success active" x-ref="alert">
-            <a id="dismiss" class="cursor-pointer font-semibold text-white">
+            <button id="dismissModal" x-on:click="$refs.alert.classList.remove('active')" class="cursor-pointer font-semibold text-white">
                 Dismiss
-            </a>  
+            </button>  
             <div class="flex items-center justify-between text-white mt-4">
                 <div class="title flex items-center gap-2">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,17 +16,6 @@
             <p class="mt-2 text-xs text-white">
                 {{ session()->get('successModal' . $user) }}
             </p>        
-        
-            <script type="text/javascript">
-        
-                let alert = document.querySelector(".alert");
-                let dismiss = document.getElementById("dismiss");
-        
-                dismiss.addEventListener("click", function(event) {
-                    alert.classList.remove("active");
-                })
-        
-            </script>
         </div>
     @endif
 
@@ -54,8 +43,7 @@
                 <h1 class="text-xl font-medium text-gray-800 ">Add some todolist</h1>
 
                 <button @click="
-                {{ $modalName }} = !{{ $modalName }}
-                console.log('test')" 
+                {{ $modalName }} = false" 
                 {{-- wire:click="resetModal" --}}
                 class="text-gray-600 focus:outline-none hover:text-gray-700">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

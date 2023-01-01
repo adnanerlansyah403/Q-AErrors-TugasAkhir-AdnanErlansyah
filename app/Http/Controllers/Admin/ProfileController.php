@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -31,7 +32,7 @@ class ProfileController extends Controller
 
         $user->update([
             "name" => $request->input('name') ? $request->input('name') : $user->name,
-            "username" => $request->input('username') ? $request->input('username') : $user->username,
+            "username" => $request->input('username') ? Str::replace(' ', '', $request->input("username")) : $user->username,
             "email" => $request->input('email') ? $request->input('email') : $user->email,
             "password" => $request->input('password') ? $request->input('password') : $user->password,
             "birthdate" => $request->input('birthdate') ? $request->input('birthdate') : $user->birthdate,

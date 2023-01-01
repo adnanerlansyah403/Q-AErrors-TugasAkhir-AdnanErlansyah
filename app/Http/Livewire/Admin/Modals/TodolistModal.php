@@ -5,6 +5,9 @@ namespace App\Http\Livewire\Admin\Modals;
 use App\Models\Todolist;
 use Livewire\Component;
 
+/**
+ * @middleware(['checkRole:superadmin'])
+ */
 class TodolistModal extends Component
 {
 
@@ -50,13 +53,24 @@ class TodolistModal extends Component
 
         $this->validate();
 
+        $role_id = 1;
+
+        if ($this->user == 'admin') {
+            $role_id = 2;
+        } else if ($this->user == 'superadmin') {
+            $role_id = 3;
+        }
+
         $todolist = Todolist::query()->create([
             "task" => $this->task,
             "description" => $this->description,
-            "type" => $this->user
+            "type" => $this->user,
+            "role_id" => $role_id
         ]);
 
         $this->reset(['task', 'description']);
+
+        $this->emit("refreshList");
 
         session()->flash("successModal$this->user", "Todolist form has been submitted");
     }
@@ -74,10 +88,5 @@ class TodolistModal extends Component
         $this->task = $todolist['task'];
         $this->description = $todolist['description'];
         $this->user = $todolist['type'];
-    }
-
-    public function updateTodolist()
-    {
-        dd($this->todolist);
     }
 }

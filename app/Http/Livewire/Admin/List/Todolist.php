@@ -13,7 +13,8 @@ class Todolist extends Component
     public $types;
 
     protected $listeners = [
-        'refreshList' => '$refresh',
+        'refresh' => '$refresh',
+        'refreshList' => 'refreshList'
     ];
 
     public function render()
@@ -21,12 +22,13 @@ class Todolist extends Component
         return view('livewire.admin.list.todolist');
     }
 
+    public function refreshList()
+    {
+        $this->todolists = ModelsTodolist::query()->get();
+    }
+
     public function resetModalTodolist($modalName)
     {
-        dd("test");
-        // $this->emit('resetModalTodolist', [
-        //     'modalName' => $modalName,
-        // ]);
     }
 
     public function deleteTodolist(ModelsTodolist $todolist)
@@ -34,11 +36,7 @@ class Todolist extends Component
 
         $todolist->delete();
 
-        // session()->flash("successTodolist", "Todolist deleted successfully");
-
         return redirect()->route("admin.dashboard")->with("success", "Todolist deleted successfully");
-
-        // $this->emit("refreshList");
     }
 
     public function editTodolist(ModelsTodolist $todolist)

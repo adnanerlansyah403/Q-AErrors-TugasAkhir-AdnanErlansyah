@@ -47,14 +47,66 @@
         </select>
       </div>
       
-      <div class="flex flex-col mt-2 w-full">
-        <label for="bio" class="">Bio</label>
-        <textarea name="bio" id="bio" rows="5" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none w-full" style="border: 1px solid gray;" placeholder="Your Bio">{{ $admin->bio }}</textarea>
-    </div>
+      <div class="flex flex-col w-[99%] mt-2">
+        <label for="profession" class="">Profession</label>
+        <select name="profession" id="profession"
+        class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" style="border: 1px solid gray;">
+          <option value="fronetend" {{ $admin->profession == 'frontend' ? 'selected' : '' }}>Frontend Developer</option>
+          <option value="freelancer" {{ $admin->profession == 'freelancer' ? 'selected' : '' }}>Freelancer</option>
+          <option value="backend" {{ $admin->profession == 'backend' ? 'selected' : '' }}>Backend Developer</option>
+        </select>
+        @error('profession') 
+            <div class="flex items-center gap-2 translate-y-2">
+                <svg class="h-6 w-6 text-red-primary cursor-pointer"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="text-red-400 font-semibold">{{ $message }}</span>
+            </div> 
+        @enderror
+      </div>
+
+      <div class="flex flex-col w-full mt-2">
+        <label for="address" class="">Address</label>
+        <textarea name="address" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" id="address" cols="30" rows="10" style="border: 1px solid gray;" placeholder="Address">{{ $admin->address }}</textarea>
+        @error('address') 
+            <div class="flex items-center gap-2 translate-y-2">
+                <svg class="h-6 w-6 text-red-primary cursor-pointer"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="text-red-400 font-semibold">{{ $message }}</span>
+            </div> 
+        @enderror
+      </div>
+
+      <div class="flex flex-col w-full mt-2">
+          <label for="bio" class="">Bio</label>
+          <textarea name="bio" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" id="bio" cols="30" rows="10" style="border: 1px solid gray;" placeholder="Your bio">{{ $admin->bio }}</textarea>
+          @error('bio') 
+              <div class="flex items-center gap-2 translate-y-2">
+                  <svg class="h-6 w-6 text-red-primary cursor-pointer"
+                          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                          stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span class="text-red-400 font-semibold">{{ $message }}</span>
+              </div> 
+          @enderror
+      </div>
       
       <br><br>
 
-    <button type="submit" class="md:w-32 bg-blue-600 dark:bg-gray-100 text-white dark:text-gray-800 font-bold py-3 px-6 rounded-lg hover:bg-blue-500 dark:hover:bg-gray-200 transition ease-in-out duration-300">Submit</button>
+    <button type="submit" class="-ml-4 mt-4 md:w-32 bg-blue-600 dark:bg-gray-100 text-white dark:text-gray-800 font-bold py-3 px-6 rounded-lg hover:bg-blue-500 dark:hover:bg-gray-200 transition ease-in-out duration-300">Submit</button>
+  </div>
 </form>
 
 @endsection
