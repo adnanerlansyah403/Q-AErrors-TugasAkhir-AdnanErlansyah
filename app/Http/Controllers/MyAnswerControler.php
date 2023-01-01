@@ -17,6 +17,7 @@ class MyAnswerControler extends Controller
         $answers = Answer::query()
             ->where('user_id', Auth::user()->id)
             ->where('slug', 'LIKE', '%' . $request->input('keywords') . '%')
+            ->orWhere('title', 'LIKE', '%' . $request->input('keywords') . '%')
             ->latest()
             ->paginate(10);
 
@@ -44,7 +45,20 @@ class MyAnswerControler extends Controller
             'category.min' => 'Category must be at least 1 character',
             'description.min' => 'Description must be at least 5 characters',
             'title.max' => 'Title cannot be longer than 255 characters',
+            'thumbnail.required' => 'Thumbnail is required',
+            'thumbnail.mimes' => 'Thumbnail must be an image',
+            'thumbnail.max' => 'Size Thumbnail cannot be longer than 1024 characters'
         ]);
+
+        if ($request->hasFile('thumbnail')) {
+            if ($answer->thumbnail_path != null) {
+                Storage::disk('public')->exists($answer->thumbnail_path) ?
+                    Storage::disk('public')->delete($answer->thumbnail_path) : false;
+            }
+            $thumbnail_originalname = $request->file('thumbnail')->getClientOriginalName();
+            $thumbnail_path = '/' . $request->file('thumbnail')->store('thumbnails_answer', 'public');
+            $thumbnail_link = request()->getSchemeAndHttpHost() . '/' . $thumbnail_path;
+        }
 
 
         $answer->update([
@@ -53,6 +67,9 @@ class MyAnswerControler extends Controller
             "description_editor" => $request->input("description"),
             "description_original" => strip_tags($request->input("description")),
             "category_id" => $request->input("category"),
+            "thumbnail_originalname" => isset($thumbnail_originalname) ? $thumbnail_originalname : null,
+            "thumbnail_path" => isset($thumbnail_path) ? $thumbnail_path : null,
+            "thumbnail_link" => isset($thumbnail_link) ? $thumbnail_link : null,
             "user_id" => auth()->id()
         ]);
 
@@ -61,7 +78,9 @@ class MyAnswerControler extends Controller
 
     public function destroy(Answer $answer)
     {
-        Storage::disk("public")->exists($answer->thumbnail_path) ? Storage::disk("public")->delete($answer->thumbnail_path) : false;
+        if ($answer->thumbnail_path != null) {
+            Storage::disk("public")->exists($answer->thumbnail_path) ? Storage::disk("public")->delete($answer->thumbnail_path) : false;
+        }
 
         $answer->delete();
 

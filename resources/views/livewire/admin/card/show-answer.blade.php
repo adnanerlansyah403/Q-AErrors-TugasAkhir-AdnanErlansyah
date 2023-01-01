@@ -45,6 +45,11 @@
                     {{ $answer->title }}
                 </h1>
             </div>
+            @if ($answer->thumbnail_path)
+                <figure class="w-full">
+                    <img src="{{ asset( 'storage/' . $answer->thumbnail_path ) }}" alt="gambarerror" class="my-4" style="width: 100%; height: 500px;">
+                </figure>
+            @endif
         </div>
         
         <p class="text-slate-600 mt-4 mb-8 text-[20px]">
@@ -61,7 +66,7 @@
                     @if (Auth::user()->id == $answer->user_id)
                         <a href="{{ route("users.myanswer.edit", $answer) }}" class="w-max flex items-center gap-4 font-bold outline outline-1 outline-red-primary px-6 py-4 rounded-lg hover:bg-slate-800 hover:text-white transition duration-200 hover:outline-none">
                             <ion-icon name="pencil-outline"></ion-icon>
-                            <p><span class="span">Edit</span> Question</p>
+                            <p><span class="span">Edit</span> Answer</p>
                         </a>
                     @endif
                     <div class="flex items-center gap-2">

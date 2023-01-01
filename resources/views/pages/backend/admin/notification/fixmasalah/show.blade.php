@@ -69,9 +69,9 @@
                             </p>
                         </div>
                         <div class="mt-6">
-                            <h3 class="text-lg font-bold mb-2">Jawaban</h3>
+                            <h3 class="text-lg font-bold mb-6">Jawaban</h3>
                             <p class="text-lg text-justify leading-relaxed text-blueGray-700 dark:text-white">
-                                {{ $answer->description_original }}
+                                {!! $answer->description_editor !!}
                             </p>
                         </div>
                     {{-- <a href="#pablo" class="font-normal text-blue-800">Show more</a> --}}

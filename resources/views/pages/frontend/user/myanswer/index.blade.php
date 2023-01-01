@@ -23,13 +23,13 @@
 
         <div class="w-full mt-6 flex flex-wrap items-center gap-6">
             @forelse ($answers as $answer)
-                <div class="card-item gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-[49%] h-max">
+                <div class="card-item gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-[49%] h-[300px]">
                     <div class="flex items-center justify-between">
                         <div>
                             <a href="{{ route("errors.fixerror.show", $answer) }}" class="text-md font-bold mb-1">{{ $answer->title }}</a>
                             <h3 class="font-semibold text-[16px]">
                                 Category: 
-                                <span class="span">Coding</span>
+                                <span class="span">{{ $answer->category->name }}</span>
                             </h3>
                         </div>
                         <a href="{{ route("users.myanswer.destroy", $answer) }}" class="text-md w-10 h-10 flex items-center justify-center rounded-lg text-white bg-red-primary hover:bg-slate-800
@@ -40,7 +40,7 @@
                     <p class="text-[18px] text-slate-500 mt-6">
                         {{ Str::limit($answer->description_original, 100) }}
                     </p>
-                    <div class="flex justify-between items-center mt-6">
+                    <div class="flex justify-between items-center mt-6" style="position: absolute; bottom: 20px; width: -webkit-fill-available;">
                         <div>
                             <h3 class="font-bold">Created at <span class="span">{{ Carbon\Carbon::parse($answer->created_at)->diffForHumans() }}</span></h3>
                             <h3 class="font-bold">By <span class="span">{{ $answer->user->name }}</span></h3>

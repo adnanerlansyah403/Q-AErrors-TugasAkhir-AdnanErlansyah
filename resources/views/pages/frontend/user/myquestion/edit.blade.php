@@ -111,7 +111,7 @@
             
                     <div class="mb-2">
                         <button type="submit" href="#notanswer" class="w-max flex items-center gap-4 font-bold outline outline-1 outline-red-primary px-6 py-4 rounded-lg hover:bg-slate-800 hover:text-white transition duration-200 hover:outline-none">
-                            <ion-icon name="save-outline"></ion-icon>
+                            <ion-icon name="save-outline" class="text-[24px]"></ion-icon>
                             <p>
                                 <span class="span">Update</span> Masalah
                             </p>

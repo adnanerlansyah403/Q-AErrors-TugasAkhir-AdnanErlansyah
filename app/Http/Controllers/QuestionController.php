@@ -20,7 +20,8 @@ class QuestionController extends Controller
     {
         $questions = Question::query()
             ->latest()
-            ->where('slug', 'LIKE', '%' . $request->input('keywords') . '%')
+            ->orWhere('slug', 'LIKE', '%' . $request->input('keywords') . '%')
+            ->orWhere('title', 'LIKE', '%' . $request->input('keywords') . '%')
             ->paginate(10);
 
         return view('pages.frontend.errors.searcherror.index', compact('questions'));
@@ -140,7 +141,8 @@ class QuestionController extends Controller
 
         $questions = Question::query()
             ->where('status', 0)
-            ->where('slug', 'LIKE', '%' . $request->input('keywords') . '%')
+            ->orWhere('slug', 'LIKE', '%' . $request->input('keywords') . '%')
+            ->orWhere('title', 'LIKE', '%' . $request->input('keywords') . '%')
             ->latest()->paginate(10);
 
         return view('pages.frontend.errors.searcherror.notanswer', compact('questions'));

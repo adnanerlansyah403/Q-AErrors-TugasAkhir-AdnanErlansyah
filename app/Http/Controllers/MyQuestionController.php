@@ -17,6 +17,7 @@ class MyQuestionController extends Controller
         $questions = Question::query()
             ->where('user_id', Auth::user()->id)
             ->where('slug', 'LIKE', '%' . $request->input('keywords') . '%')
+            ->orWhere('title', 'LIKE', '%' . $request->input('keywords') . '%')
             ->latest()
             ->paginate(10);
 

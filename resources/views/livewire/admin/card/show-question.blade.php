@@ -32,9 +32,9 @@
 
         <div class="flex items-center justify-between">
 
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-3">
                 @if($question->user->photo_path)
-                    <img src="{{ asset( 'storage/' . Auth::user()->photo_path) }}" width="40" height="40" alt="photoprofile" class="rounded-full">
+                    <img src="{{ asset( 'storage/' . $question->user->photo_path) }}" width="40" height="40" alt="photoprofile" class="rounded-full">
                 @endif
                 <h3 class="font-bold">
                     <span class="span">{{ $question->user->name }}</span>
@@ -57,7 +57,7 @@
             </div>
         </div>
         
-        <p class="text-slate-600 my-4 text-[24px]">
+        <p class="text-slate-600 mt-4 mb-14 text-[24px]">
             {!! $question->description_editor !!}
         </p>
         

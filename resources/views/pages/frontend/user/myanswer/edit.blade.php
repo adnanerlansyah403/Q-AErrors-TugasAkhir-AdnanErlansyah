@@ -19,8 +19,7 @@
 
 
         <div class="w-full mt-6 flex flex-wrap items-center gap-6">
-            {{-- @livewire("form.question-form") --}}
-            <form method="POST" action="{{ route("users.myanswer.update", $answer) }}" class="card-item gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-full">
+            <form method="POST" action="{{ route("users.myanswer.update", $answer) }}" class="card-item gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-full" enctype="multipart/form-data">
                 @csrf
 
 
@@ -57,6 +56,28 @@
                         </select>
                         @error('category') 
                             <div class="flex items-center gap-2 mt-2">
+                                <svg class="h-6 w-6 text-red-primary cursor-pointer"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <span class="text-red-400 font-semibold">{{ $message }}</span>
+                            </div> 
+                        @enderror
+                    </div>
+        
+                    <div class="-mt-10 mb-6 w-full">
+                        <label for="thumbnail" class="block text-md font-medium leading-5 text-slate-700 justify-self-start mb-4"><span class="span">Thumbnail</span> Masalah</label>
+                        <div class="relative shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_2px_6px_2px] p-4 rounded-lg active:border border-red-primary transition duration-200">
+                            <input type="file" name="thumbnail" id="thumbnail" value="{{ old('thumbnail') }}" x-model="thumbnail" class="pointer-events-none" placeholder="Your thumbnail..." >
+                            <span x-on:click="thumbnail.click()" class="absolute cursor-pointer text-center flex items-center justify-center right-0 top-0 bottom-0 bg-red-primary text-white w-32 rounded-lg hover:text-slate-800">
+                                Upload
+                            </span>
+                        </div>
+                        @error('thumbnail') 
+                            <div class="flex items-center gap-2 translate-y-2">
                                 <svg class="h-6 w-6 text-red-primary cursor-pointer"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke="currentColor">
