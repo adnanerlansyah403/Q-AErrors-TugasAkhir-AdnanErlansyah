@@ -1,4 +1,4 @@
-<div class="rounded bg-gray-200 dark:bg-gray-800 p-3 flex-auto" wire:key={{ $i }}>
+<div class="rounded bg-blue-600 dark:bg-gray-800 p-3 flex-auto" wire:key={{ $i }}>
   
   @php
     
@@ -33,7 +33,7 @@
     </div>
   @endif
 
-    <div class="flex items-center justify-between py-1 text-black dark:text-white">
+    <div class="flex items-center justify-between py-1 text-white dark:text-white">
       <h3 class="text-sm font-semibold">Todolists in 
          <b class="uppercase">{{ $types[$i]->name }}</b>
        </h3>
@@ -46,8 +46,8 @@
         class="bg-white text-gray-800 p-2 rounded-lg font-bold text-sm">Add</button>
       @endif
     </div>
-    <div class="text-sm text-black dark:text-gray-50 mt-2">
-      @foreach ($todolists->where('role_id', $types[$i]->id) as $todolist)
+    <div class="text-sm text-white dark:text-gray-50 mt-2">
+      @forelse ($todolists->where('role_id', $types[$i]->id) as $todolist)
         <div class="flex items-center justify-between bg-white dark:bg-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded mt-1 border-b border-gray-100 dark:border-gray-900 cursor-pointer" wire:key={{ 'todo-'.$todolist->id }}>
           {{ $todolist->task }}
           @if (Auth::user()->role_id == 3)
@@ -69,6 +69,10 @@
             </div>
           @endif
         </div>
-      @endforeach
+      @empty
+
+        <h1 class="text-white text-lg">No Todolist</h1>
+
+      @endforelse
     </div>
 </div>

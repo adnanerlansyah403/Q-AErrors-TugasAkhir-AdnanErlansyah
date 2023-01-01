@@ -2,11 +2,12 @@
 
 namespace App\Http\Livewire\Form;
 
+use Livewire\Component;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use Livewire\Component;
-use Livewire\WithFileUploads;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileForm extends Component
@@ -78,7 +79,7 @@ class ProfileForm extends Component
 
     public function saveProfile()
     {
-
+        // dd("test");
         $this->validate();
 
         $user = Auth::user();
@@ -93,7 +94,8 @@ class ProfileForm extends Component
 
         $user->update([
             "name" => $this->name ? $this->name : $user->name,
-            "username" => $this->username ? $this->username : $user->username,
+            "username" => $this->username ?
+                Str::replace(' ', '', $this->username) : $user->username,
             "email" => $this->email ? $this->email : $user->email,
             "password" => $this->password ? $this->password : $user->password,
             "birthdate" => $this->birthdate ? $this->birthdate : $user->birthdate,
@@ -105,6 +107,14 @@ class ProfileForm extends Component
             "photo_path" => isset($photo_path) ? $photo_path : null,
             "photo_link" => isset($photo_link) ? $photo_link : null
         ]);
+
+        $this->name = $user->name;
+        $this->email = $user->email;
+        $this->username = $user->username;
+        $this->birthdate = $user->birthdate;
+        $this->profession = $user->profession;
+        $this->address = $user->address;
+        $this->bio = $user->bio;
 
         session()->flash('success', 'Your profile form has been submitted!');
 

@@ -58,6 +58,8 @@ class Kernel extends HttpKernel
         'checkMyQuestion' => \App\Http\Middleware\CheckMyQuestion::class,
         'checkMyAnswer' => \App\Http\Middleware\CheckMyAnswer::class,
         'checkCommentUser' => \App\Http\Middleware\CheckCommentUser::class,
+        'checkAlreadyReview' => \App\Http\Middleware\CheckAlreadyReview::class,
+        'checkCurrentReviewUser' => \App\Http\Middleware\CheckCurrentReviewUser::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

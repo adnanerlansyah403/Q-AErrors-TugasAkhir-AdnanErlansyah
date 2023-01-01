@@ -227,8 +227,18 @@ x-data="{
 
 
     <div class="flex justify-center items-center">
-        <button type="submit" class="flex items-center gap-4 bg-red-primary p-4 rounded-lg text-white transition duration-200">
-            Update
+        <button wire:loading.class="bg-slate-800 text-white outline-white" type="submit" class="w-max flex items-center gap-3 font-bold outline outline-1 outline-red-primary px-6 py-4 rounded-lg hover:bg-slate-800 hover:text-white transition duration-200 ease-in-out hover:outline-none group">
+            <div wire:loading.remove wire:target="saveProfile" class="flex items-center gap-3">
+                <ion-icon name="save-outline" class="text-[24px]"></ion-icon>
+                <span class="span group-hover:text-white">Update Profile</span>
+            </div>
+            <div wire:loading.flex wire:target="saveProfile">
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <span wire:loading.class="text-white">Processing...</span>
+            </div>
         </button>
     </div>
 </form>

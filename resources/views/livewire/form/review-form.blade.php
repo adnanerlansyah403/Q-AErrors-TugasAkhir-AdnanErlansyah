@@ -1,21 +1,44 @@
 <div class="w-full mt-6 flex flex-wrap items-center gap-6">
 
-    @if ($this->exception > 1) 
-    @component("components.alert", [
-        "type" => "alert-danger",
-        "icon" => '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="currentColor"/>
-            </svg>
-            ',
-        "status" => $this->exception > 1 ? "active" : "",
-        "message" => [
-            ["error" => "Too many requests for review!, Please wait another $this->exception seconds to try again!"],
-        ]
-    ])
-    @endcomponent
+
+    @if(session()->has('successReview'))
+        <div class="alert alert-success active" x-ref="alert">
+            <a id="dismiss" class="cursor-pointer font-semibold text-white">
+                Dismiss
+            </a>  
+            <div class="flex items-center justify-between text-white mt-4">
+                <div class="title flex items-center gap-2">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="currentColor"/>
+                        </svg>
+                    Successfully
+                </div>
+            </div>
+            <p class="mt-2 text-xs text-white">
+                {{ session()->get('successReview') }}
+            </p>        
+        
+            <script type="text/javascript">
+        
+                let alert = document.querySelector(".alert");
+                let dismiss = document.getElementById("dismiss");
+        
+                dismiss.addEventListener("click", function(event) {
+                    alert.classList.remove("active");
+                })
+        
+            </script>
+        </div>
     @endif
 
-    <form wire:submit.prevent="storeReview" action="#" class="card-item gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-full">
+    <form 
+    @if($methodForm == 'update')
+    wire:submit.prevent="updateReview" 
+    @else
+    wire:submit.prevent="storeReview" 
+    @endif
+    action="#" 
+    class="card-item gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-full">
 
         <div class="">
 
@@ -76,7 +99,9 @@
 
             <div class="mb-2">
                 <button type="submit" class="w-max flex items-center gap-2 font-bold outline outline-1 outline-red-primary px-6 py-4 rounded-lg hover:bg-slate-800 hover:text-white transition duration-200 ease-in-out hover:outline-none group">
-                    <span class="span">Kirim</span> 
+                    <span class="span">
+                        {{ $methodForm == 'update' ? 'Update' : 'Kirim' }}    
+                    </span> 
                     <svg width="18" height="18" class="group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2.01 21L23 12 2.01 3 2 10L17 12 2 14V21Z" fill="currentColor"/>
                     </svg>

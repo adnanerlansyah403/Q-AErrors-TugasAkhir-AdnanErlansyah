@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -21,7 +22,7 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $validation = $request->validate([
-            "name" => "required|max:255",
+            "name" => "required|min:6|max:255",
             "email" => "required|email|unique:users",
             "username" => "required|unique:users",
             "password" => "required",
@@ -31,6 +32,7 @@ class RegisterController extends Controller
             "profession" => "nullable"
         ], [
             "name.required" => "Nama wajib di isi.",
+            "name.min" => "Minimal dari nama wajib harus lebih dari 6 huruf",
             "email.required" => "Email wajib di isi.",
             "email.unique" => "Email yang anda gunakan tidak valid, coba gunakan email yg lain.",
             "username.unique" => "Username yang anda gunakan tidak valid, coba gunakan username yg lain.",
@@ -53,7 +55,7 @@ class RegisterController extends Controller
         $user = User::query()->create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'username' => $request->input('username'),
+            'username' => Str::replace(' ', '', $request->input("username")),
             'password' => $request->input('password'),
             'birthdate' => $request->date('birthdate'),
             'gender' => $request->input('gender'),

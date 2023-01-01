@@ -17,6 +17,10 @@ class ReviewForm extends Component
     public $rating;
     public $exception;
 
+    public $review;
+
+    public $methodForm = "create";
+
     protected $rules = [
         'comment' => 'required|min:6|max:255',
         'rating' => 'required|max:5',
@@ -30,9 +34,14 @@ class ReviewForm extends Component
         'rating.max' => 'Rating must be less than 5',
     ];
 
-    public function __construct()
+    public function mount()
     {
-        $this->middleware = ['throttle:5,1'];
+        if (request()->review) {
+            $this->comment = request()->review->message;
+            $this->rating = request()->review->rating;
+            $this->review = request()->review;
+            $this->methodForm = "update";
+        }
     }
 
     public function updated($property)
@@ -47,9 +56,9 @@ class ReviewForm extends Component
 
     public function storeReview()
     {
+        dd("test create");
         try {
             $this->rateLimit(3, 60);
-            // dd($this->exception);
         } catch (TooManyRequestsException $exception) {
             $this->exception = $exception->secondsUntilAvailable;
         }
@@ -66,6 +75,18 @@ class ReviewForm extends Component
 
         $this->reset(['comment', 'rating']);
 
-        return redirect()->route('reviews.create')->with('success', 'Your review has been submitted!');
+        return redirect()->route('home')->with('success', 'Your review has been submitted!');
+    }
+
+    public function updateReview()
+    {
+        $this->validate();
+
+        $this->review->update([
+            'message' => $this->comment,
+            'rating' => $this->rating,
+        ]);
+
+        session()->flash('successReview', 'Your review has been updated!');
     }
 }

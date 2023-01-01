@@ -64,9 +64,9 @@
         <h1 class="text-lg text-center"> <span class="span">R</span>eviews</h1>
 
         <div>
-            <div class="card-list mt-10 mb-16 flex items-center gap-10 flex-wrap slider-smooth">
+            <div class="card-list mt-10 mb-16 flex items-center flex-wrap gap-10 slider-smooth">
                 @forelse ($reviews as $review)
-                    <div class="card-item bg-white rounded-lg shadow-[rgba(0,_0,_0,_0.35)_0px_5px_15px] px-6 py-4 w-max flex-1" style="scroll-snap-align: start;">
+                    <div class="card-item bg-white rounded-lg shadow-[rgba(0,_0,_0,_0.35)_0px_5px_15px] px-6 py-4 h-[200px] w-max flex-1 h" style="scroll-snap-align: start;">
                         <p class=" italic"><span class="span text-lg">"</span> 
                             {{ $review->message }}
                         <span class="span text-lg">"</span></p>

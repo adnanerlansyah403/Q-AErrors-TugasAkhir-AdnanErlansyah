@@ -17,6 +17,7 @@ use App\Models\Answer;
 use App\Models\Contact;
 use App\Models\Question;
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -37,32 +38,27 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    $reviews = Review::query()->where('rating', '>=', 4)->orderBy('rating', 'desc')->latest()->limit(3)->get();
-
-    // dd($reviews);
+    $reviews = Review::select()
+        ->distinct()
+        ->where('rating', '>=', 4)->orderBy('rating', 'desc')->latest()->limit(3)->get();
 
     return view('pages.frontend.index', [
         'reviews' => $reviews
     ]);
 })->name('home');
 
-Route::get("/reviews/create", function () {
-
-    return view("pages.frontend.review.create");
-})->middleware([
-    'auth',
-    'checkRole:user'
-])->name('reviews.create');
-
 Route::prefix("/reviews")
     ->name("reviews.")
     ->controller(ReviewController::class)
     ->middleware([
         'auth',
-        'checkRole:user'
+        'checkRole:user',
+        'checkAlreadyReview'
     ])->group(function () {
 
         Route::get("/create", "create")->name("create");
+
+        // Route::get("/edit/{review}", "edit")->name("edit");
     });
 
 // Errors Route
@@ -70,13 +66,6 @@ Route::prefix("/reviews")
 Route::prefix("/errors")
     ->name("errors.")
     ->group(function () {
-
-        // Route::get("/searcherrors/notanswer", function () {
-        //     dd("test");
-        //     $answers = Answer::query()->latest()->paginate(9);
-        //     // dd($answers);
-        //     return view('pages.frontend.errors.searcherror.notanswer', compact('answers'));
-        // })->name('searcherrors.notanswer.index');
 
         // Halaman Error List
         Route::prefix("/searcherror")
@@ -128,7 +117,7 @@ Route::prefix("/errors")
 Route::prefix("/user")
     ->middleware([
         'auth',
-        'checkRole:user'
+        'checkRole:user',
     ])
     ->name("users.")
     ->group(function () {
@@ -158,6 +147,22 @@ Route::prefix("/user")
         Route::post("/myanswer/update/{answer}", [MyAnswerControler::class, "update"])->name("myanswer.update")->middleware("checkMyAnswer");
 
         Route::get("/myanswer/delete/{answer}", [MyAnswerControler::class, "destroy"])->name("myanswer.destroy")->middleware("checkMyAnswer");
+
+        // Halaman tampilan list review user
+        Route::get("/myreview", function () {
+
+            $myReview = Review::query()->where('user_id', Auth::user()->id)->first();
+
+            return view("pages.frontend.user.myreview.index", compact('myReview'));
+        })->name("myreview.index");
+
+        Route::get("/myreview/{review}/{username}", function (Review $review, $username) {
+
+            // dd($review);
+            return view("pages.frontend.user.myreview.edit", compact('review'));
+        })
+            ->name("myreview.edit")
+            ->middleware("checkCurrentReviewUser");
     });
 
 Route::prefix("/admin")

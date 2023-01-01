@@ -214,7 +214,9 @@
                               </td>
                             </tr>
                           @empty
-                            
+                            {{-- <td class="px-4 py-3" align="center">
+                              <h1 class="text-white text-lg text-center">No Data</h1>
+                            </td> --}}
                           @endforelse
                         </tbody>
                       </table>
