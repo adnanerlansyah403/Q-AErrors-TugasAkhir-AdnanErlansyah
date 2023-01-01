@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Category;
+use App\Models\UserLikeQuestion;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -30,5 +31,10 @@ class Question extends Model
     public function comments()
     {
         return $this->hasMany(UserCommentQuestion::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(UserLikeQuestion::class);
     }
 }

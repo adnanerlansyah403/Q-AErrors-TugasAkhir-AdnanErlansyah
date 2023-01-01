@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\Category;
 use App\Models\User;
+use App\Models\Category;
+use App\Models\UserLikeAnswer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -27,5 +28,10 @@ class Answer extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(UserLikeAnswer::class);
     }
 }

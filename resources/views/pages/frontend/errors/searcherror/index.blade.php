@@ -39,11 +39,21 @@
         <div class="w-full mt-6 flex flex-wrap items-center gap-6">
             @forelse ($questions as $question)
                 <div class="card-item gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-[49%] h-max">
-                    <a href="{{ route("errors.searcherror.show", $question) }}" class="text-md font-bold mb-1">{{ $question->title }}</a>
-                    <h3 class="font-semibold text-[16px]">
-                        Category: 
-                        <span class="span">Coding</span>
-                    </h3>
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <a href="{{ route("errors.searcherror.show", $question) }}" class="text-md font-bold mb-1">{{ $question->title }}</a>
+                            <h3 class="font-semibold text-[16px]">
+                                Category: 
+                                <span class="span">Coding</span>
+                            </h3>
+                        </div>
+                        <div class="relative cursor-none pointer-events-none">
+                            <ion-icon name="heart" class="text-[44px] text-red-primary"></ion-icon>
+                            <span class="absolute top-[10px] {{ $question->likes->count() >= 1 ? 'right-[17.5px]' : 'right-[16px]' }} text-white font-semibold">
+                                {{ $question->likes->count() }}
+                            </span>
+                        </div>
+                    </div>
                     <p class="text-[18px] text-slate-500 mt-6">
                         {{  Str::limit($question->description_original, 100)  }}
                     </p>

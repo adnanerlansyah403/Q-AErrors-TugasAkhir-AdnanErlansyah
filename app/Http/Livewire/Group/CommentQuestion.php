@@ -19,8 +19,6 @@ class CommentQuestion extends Component
         'comment.required' => 'Comment is required',
     ];
 
-    // protected $listeners = ['refreshComponent' => '$refresh'];
-
     public function mount()
     {
         $this->countComments = !empty($this->question->comments) ? count($this->question->comments) : 0;
