@@ -23,7 +23,7 @@
 
         <div class="w-full mt-6 flex flex-wrap items-center gap-6">
             @forelse ($answers as $answer)
-                <div class="card-item gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-[49%] h-[300px]">
+                <div class="card-item gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-[49%] h-[300px]" style="position: relative;">
                     <div class="flex items-center justify-between">
                         <div>
                             <a href="{{ route("errors.fixerror.show", $answer) }}" class="text-md font-bold mb-1">{{ $answer->title }}</a>
@@ -44,6 +44,12 @@
                         <div>
                             <h3 class="font-bold">Created at <span class="span">{{ Carbon\Carbon::parse($answer->created_at)->diffForHumans() }}</span></h3>
                             <h3 class="font-bold">By <span class="span">{{ $answer->user->name }}</span></h3>
+                        </div>
+                        <div class="relative cursor-none pointer-events-none -translate-x-6">
+                            <ion-icon name="heart" class="text-[44px] text-red-primary"></ion-icon>
+                            <span class="absolute top-[10px] {{ $answer->likes->count() >= 1 ? 'right-[17.5px]' : 'right-[17px]' }} text-white font-semibold">
+                                {{ $answer->likes->count() }}
+                            </span>
                         </div>
                     </div>
                 </div>

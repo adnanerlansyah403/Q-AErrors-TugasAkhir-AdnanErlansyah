@@ -77,22 +77,29 @@ Route::prefix("/errors")
 
                 Route::get("/", [QuestionController::class, "index"])->name('index');
 
-                Route::get("/create", [QuestionController::class, "create"])->middleware("auth")->name("create");
+                Route::get("/create", [QuestionController::class, "create"])
+                    ->middleware(["auth", "checkRole:user,admin"])->name("create");
 
-                Route::post("/store", [QuestionController::class, "store"])->name("store");
+                Route::post("/store", [QuestionController::class, "store"])
+                    ->middleware(["auth", "checkRole:user,admin"])
+                    ->name("store");
 
-                Route::get("/show/{question}", [QuestionController::class, "show"])->name("show");
+                Route::get("/show/{question}", [QuestionController::class, "show"])
+                    ->middleware(["auth", "checkRole:user,admin"])->name("show");
 
-                Route::get("/edit/{question}", [QuestionController::class, "edit"])->name("edit");
+                Route::get("/edit/{question}", [QuestionController::class, "edit"])
+                    ->middleware(["auth", "checkRole:user,admin"])->name("edit");
 
-                Route::put("/update/{question}", [QuestionController::class, "update"])->name("update");
+                Route::put("/update/{question}", [QuestionController::class, "update"])
+                    ->middleware(["auth", "checkRole:user,admin"])
+                    ->name("update");
 
                 Route::get("/notanswer", [QuestionController::class, 'indexNotAnswer'])->name("notanswer.index");
 
                 // Comment Routes
-                Route::get("/show/{question}/{comment}/comment", [QuestionController::class, 'destroyComment'])
+                Route::get("/destroy/{question}/{comment}/comment", [QuestionController::class, 'destroyComment'])
                     ->name("comment.destroy")
-                    ->middleware("checkCommentUser");
+                    ->middleware(["checkCommentUser"]);
             });
 
 
@@ -101,16 +108,19 @@ Route::prefix("/errors")
 
         Route::get("/fixerror", [FixQuestionController::class, 'index'])->name("fixerror.index");
 
-        Route::get("/fixerror/create", [FixQuestionController::class, "create"])->middleware("auth")->name("fixerror.create");
+        Route::get("/fixerror/create", [FixQuestionController::class, "create"])->middleware(["auth", "checkRole:user,admin"])->name("fixerror.create");
 
         Route::get("/fixerror/show/{answer}", [FixQuestionController::class, 'show'])
             ->name("fixerror.show");
 
 
         Route::get("/fixerror/edit/{answer}", [FixQuestionController::class, 'edit'])
+            ->middleware(["auth", "checkRole:user,admin"])
             ->name("fixerror.edit");
 
-        Route::post("/store", [FixQuestionController::class, "store"])->name("fixerror.store");
+        Route::post("/store", [FixQuestionController::class, "store"])
+            ->middleware(["auth", "checkRole:user,admin"])
+            ->name("fixerror.store");
     });
 
 

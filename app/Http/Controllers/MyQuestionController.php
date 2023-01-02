@@ -52,8 +52,10 @@ class MyQuestionController extends Controller
         ]);
 
         if ($request->hasFile('thumbnail')) {
-            Storage::disk('public')->exists($question->thumbnail_path) ?
-                Storage::disk('public')->delete($question->thumbnail_path) : false;
+            if ($question->thumbnail_path != null) {
+                Storage::disk('public')->exists($question->thumbnail_path) ?
+                    Storage::disk('public')->delete($question->thumbnail_path) : false;
+            }
             $thumbnail_originalname = $request->file('thumbnail')->getClientOriginalName();
             $thumbnail_path = '/' . $request->file('thumbnail')->store('thumbnails_question', 'public');
             $thumbnail_link = request()->getSchemeAndHttpHost() . '/' . $thumbnail_path;
@@ -77,9 +79,11 @@ class MyQuestionController extends Controller
 
     public function destroy(Question $question)
     {
-        Storage::disk("public")->exists($question->thumbnail_path) ?
-            Storage::disk("public")->delete($question->thumbnail_path)
-            : dd(false);
+        if ($question->thumbnail_path != null) {
+            Storage::disk("public")->exists($question->thumbnail_path) ?
+                Storage::disk("public")->delete($question->thumbnail_path)
+                : false;
+        }
 
         $question->delete();
 

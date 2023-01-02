@@ -14,10 +14,11 @@ class FixQuestionController extends Controller
     {
         $answers = Answer::query()
             ->latest()
+            ->where('status', true)
             ->where('slug', 'LIKE', '%' . $request->input('keywords') . '%')
-            ->orWhere('title', 'LIKE', '%' . $request->input('keywords') . '%')
-            ->where('status', 1)
             ->paginate(10);
+
+        // dd($answers);
 
 
         return view("pages.frontend.errors.fixerror.index", compact('answers'));
@@ -40,7 +41,8 @@ class FixQuestionController extends Controller
         $validation = $request->validate([
             'title' => 'required|min:5|max:255',
             'category' => 'required|min:1',
-            'description' => 'required'
+            'description' => 'required',
+            'thumbnail' => 'nullable|max:1024'
         ], [
             'title.required' => 'Title is required',
             'category.required' => 'Category is required',

@@ -85,8 +85,10 @@ class ProfileForm extends Component
         $user = Auth::user();
 
         if (isset($this->photo)) {
-            Storage::disk('public')->exists($user->photo_path) ?
-                Storage::disk('public')->delete($user->photo_path) : false;
+            if ($user->photo_path != null) {
+                Storage::disk('public')->exists($user->photo_path) ?
+                    Storage::disk('public')->delete($user->photo_path) : false;
+            }
             $photo_originalname = $this->photo->getClientOriginalName();
             $photo_path = '/' . $this->photo->store('photos_user_profile', 'public');
             $photo_link = request()->getSchemeAndHttpHost() . '/' . $photo_path;

@@ -5,38 +5,6 @@
 
 @section("content_frontend")
 
-<style>
-    pre {
-    margin: 0;
-    padding: 16px;
-    background-color: #2e2f30;
-    border-radius: 3px;
-    }
-
-    code {
-        font-family: Consolas, "Courier New", monospace;
-        font-size: 14px;
-        color: white;
-    }
-
-    code span {
-        color: #E44B23;
-    }
-
-    code.xml {
-        color: #f0d53c !important;
-    }
-
-    code.html {
-        color: #E44B23;
-    }
-
-    code.css {
-        color: #563D7C;
-    }
-
-</style>
-
 
 <section class="section">
     <div class="container">

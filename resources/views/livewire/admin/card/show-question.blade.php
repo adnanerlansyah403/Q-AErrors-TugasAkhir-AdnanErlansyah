@@ -23,18 +23,13 @@
     
     <div class="px-6 py-7 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-full mt-4">
 
-        @if($question->thumbnail_path)
-            <figure class="mb-6">
-                <img src="{{ asset("storage/" . $question->thumbnail_path) }}" alt="imagerror" class="rounded-lg w-full object-cover h-[600px]">
-            </figure>
-        @endif
-
-
+        
+        
         <div class="flex items-center justify-between">
-
+            
             <div class="flex items-center gap-3">
                 @if($question->user->photo_path)
-                    <img src="{{ asset( 'storage/' . $question->user->photo_path) }}" width="40" height="40" alt="photoprofile" class="rounded-full">
+                <img src="{{ asset( 'storage/' . $question->user->photo_path) }}" width="40" height="40" alt="photoprofile" class="rounded-full">
                 @endif
                 <h3 class="font-bold">
                     <span class="span">{{ $question->user->name }}</span>
@@ -46,10 +41,10 @@
                 <span class="span">{{ $question->category->name }}</span>
             </h3>
         </div>
-
+        
         <p class="text-\[16px]">Created at <span class="span font-bold">{{ Carbon\Carbon::parse($question->created_at)->diffForHumans() }}</span></p>
-
-        <div class="mt-4">
+        
+        <div class="my-4">
             <div class="flex items-center justify-between">
                 <h1 class="text-lg font-bold">
                     {{ $question->title }}
@@ -57,7 +52,13 @@
             </div>
         </div>
         
-        <p class="text-slate-600 mt-4 mb-14 text-[24px]">
+        @if($question->thumbnail_path)
+            <figure class="mb-6">
+                <img src="{{ asset("storage/" . $question->thumbnail_path) }}" alt="imagerror" class="rounded-lg w-full object-cover h-[600px]">
+            </figure>
+        @endif
+        
+        <p class="text-slate-600 mb-4 text-[24px]">
             {!! $question->description_editor !!}
         </p>
         
@@ -123,7 +124,7 @@
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-4">
                             @if ($c->user->photo_path)
-                                <img src="{{ asset('storage/' . $c->user->photo_path) }}" width="40" height="40" alt="photoprofile" />
+                                <img src="{{ asset('storage/' . $c->user->photo_path) }}" width="40" height="40" alt="photoprofile" class="rounded-full" />
                             @else
                                 @switch($c->user->gender)
                                     @case('l')

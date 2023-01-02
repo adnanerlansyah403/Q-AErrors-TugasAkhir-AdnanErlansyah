@@ -122,14 +122,14 @@
                         <p class=" italic"><span class="span text-lg">"</span> 
                             {{ $review->message }}
                         <span class="span text-lg">"</span></p>
-                        <div class="flex items-center gap-4 mt-4">
-                            @if($review->user->photo_path)
-                                <img src="{{ asset( 'storage/' . $review->user->photo_path) }}" width="40" height="40" alt="photoprofile" class="rounded-full">
-                            @endif
+                        <div class="flex items-center gap-4 mt-4 absolute bottom-[20px]">
                             @php
                                 $fullName = explode(' ', $review->user->name);
                             @endphp
-                            <h3 class="text-md absolute bottom-[20px]"><span class="span">{{ $fullName[0] }}</span> {{ isset($fullName[1]) ? $fullName[1] : '' }} </h3>
+                            @if($review->user->photo_path)
+                                <img src="{{ asset( 'storage' . $review->user->photo_path) }}" width="40" height="40" alt="photoprofile" class="rounded-full">
+                            @endif
+                            <h3 class="text-md"><span class="span">{{ $fullName[0] }}</span> {{ isset($fullName[1]) ? $fullName[1] : '' }} </h3>
                         </div>
                     </div>
                 @empty
@@ -168,7 +168,7 @@
 
         <h1 class="text-lg text-center"> <span class="span">C</span>ontact</h1>
 
-        <div class="-ml-1 mt-10 mb-16 flex justify-between flex-wrap gap-40">
+        <div class="-ml-1 mt-10 mb-16 flex gap-10 flex-wrap">
             <div class="left-side">
                 <img src="{{ asset("assets/images/contact.svg") }}" width="650" height="475" alt="">
             </div>

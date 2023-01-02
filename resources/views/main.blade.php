@@ -15,6 +15,12 @@
         <script src="https://<hostname.tld>/tinymce.min.js" referrerpolicy="origin"></script>
         <script src="https://cdn.tiny.cloud/1/u2nxm9ys2v0iwr5re916e7g6e8yjcnyzb81g34b18pmx0kk2/tinymce/6/plugins.min.js" referrerpolicy="origin"></script>
 
+        {{-- Highlight Code CSS --}}
+        {{-- <link rel="stylesheet" href="{{ asset("assets/css/highlight/styles/atom-one-dark.min.css") }}"> --}}
+
+        {{-- Prism Code CSS --}}
+        <link rel="stylesheet" href="{{ asset("assets/css/prism/prism.css") }}">
+
         @stack("styles")
         
         <style>
@@ -29,6 +35,34 @@
                 bottom: 40px !important;
                 opacity: 1;
                 transition: .2s ease-in-out;
+            }
+            pre {
+            margin: 0;
+            padding: 16px;
+            background-color: #2e2f30;
+            border-radius: 3px;
+            }
+
+            code {
+                font-family: Consolas, "Courier New", monospace;
+                font-size: 14px;
+                color: rgb(241, 180, 65);
+            }
+
+            code span {
+                color: #E44B23;
+            }
+
+            code.xml {
+                color: #f0d53c !important;
+            }
+
+            code.html {
+                color: #E44B23;
+            }
+
+            code.css {
+                color: #563D7C;
             }
         </style>
         
@@ -97,7 +131,7 @@
         <script>
             tinymce.init({
             selector: '#description',
-            plugins: 'anchor autolink charmap preview fullscreen emoticons image link lists media searchreplace table wordcount',
+            plugins: 'anchor autolink code codesample formatselect charmap preview fullscreen emoticons image link lists media searchreplace table wordcount',
             });
         </script>
 
@@ -122,6 +156,8 @@
             })
 
         </script>
+
+        <script src="{{ asset("assets/js/prism.js") }}"></script>
         
     </body>
 </html>

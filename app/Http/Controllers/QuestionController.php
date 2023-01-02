@@ -54,7 +54,7 @@ class QuestionController extends Controller
             'title' => 'required|min:5|max:255',
             'category' => 'required|min:1',
             'description' => 'required',
-            'thumbnail' => 'required|max:1024'
+            'thumbnail' => 'nullable|max:1024'
         ], [
             'title.required' => 'Title is required',
             'category.required' => 'Category is required',
@@ -63,7 +63,6 @@ class QuestionController extends Controller
             'category.min' => 'Category must be at least 1 character',
             'description.min' => 'Description must be at least 5 characters',
             'title.max' => 'Title cannot be longer than 255 characters',
-            'thumbnail.required' => 'Thumbnail is required',
             'thumbnail.mimes' => 'Thumbnail must be an image',
             'thumbnail.max' => 'Size Thumbnail cannot be longer than 1024 characters'
         ]);

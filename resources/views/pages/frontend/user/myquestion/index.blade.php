@@ -24,6 +24,7 @@
 
         <div class="w-full mt-6 flex flex-wrap items-center gap-6">
             @forelse ($questions as $question)
+                {{-- @dd($question) --}}
                 <div class="card-item gap-6 px-6 py-6 rounded-lg shadow-[rgba(60,_64,_67,_0.3)_0px_1px_2px_0px,_rgba(60,_64,_67,_0.15)_0px_1px_3px_1px] w-[49%] h-[300px]" style="position: relative">
                     <div class="flex items-center justify-between">
                         <div>
@@ -39,14 +40,14 @@
                         </a>
                     </div>
                     <p class="text-[18px] text-slate-500 mt-6">
-                        {{ $question->description }}
+                        {{ Str::limit($question->description_original, 100) }}
                     </p>
                     <div class="flex justify-between items-center mt-6" style="position: absolute; bottom: 20px; width: -webkit-fill-available;">
                         <div>
                             <h3 class="font-bold">Created at <span class="span">{{ Carbon\Carbon::parse($question->created_at)->diffForHumans() }}</span></h3>
                             <h3 class="font-bold">By <span class="span">{{ $question->user->name }}</span></h3>
                         </div>
-                        <p class="flex items-center gap-2">
+                        <p class="flex items-center gap-2 -translate-x-8">
                             Jawaban 
                             <span class="block w-8 h-8 rounded-full leading-8 bg-red-primary text-white font-semibold text-center">
                                 {{ count($question->comments) }}

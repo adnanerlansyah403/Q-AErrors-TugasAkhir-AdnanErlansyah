@@ -78,9 +78,13 @@ class MyAnswerControler extends Controller
 
     public function destroy(Answer $answer)
     {
+        // dd("test");
         if ($answer->thumbnail_path != null) {
+            // dd("test photo");
             Storage::disk("public")->exists($answer->thumbnail_path) ? Storage::disk("public")->delete($answer->thumbnail_path) : false;
         }
+
+        // dd("test");
 
         $answer->delete();
 

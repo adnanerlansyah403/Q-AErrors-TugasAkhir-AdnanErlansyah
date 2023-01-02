@@ -17,7 +17,7 @@
                 <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
                     <div class="relative">
                         @if ($review->user->photo_path)
-                            <img alt="gambaruser" src="{{ $review->user->photo_path }}" class="shadow-xl rounded-full h-auto border-none max-w-[150px] absolute -top-20 left-1/2 -translate-x-1/2">
+                            <img alt="gambaruser" src="{{ asset('storage' . $review->user->photo_path) }}" class="shadow-xl rounded-full h-auto border-none max-w-[150px] absolute -top-20 left-1/2 -translate-x-1/2" width="100" height="100">
                         @endif
                     </div>
                     </div>
