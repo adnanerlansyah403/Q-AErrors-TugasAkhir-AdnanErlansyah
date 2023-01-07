@@ -174,6 +174,7 @@
       </style>
 
         {{-- Livewire Styles --}}
+
         @livewireStyles
 
 <div x-data="setup()" :class="{ 'dark': isDark }">
@@ -224,6 +225,7 @@
   </div>    
 
   {{-- Livewire Scripts --}}
+  
   @livewireScripts
 
   <script>

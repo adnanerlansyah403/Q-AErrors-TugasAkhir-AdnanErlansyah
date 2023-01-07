@@ -45,6 +45,12 @@
         display: none;
     }
 
+    input:is(:hover, :focus-visible) {
+        border: none;
+        outline: none;
+        background: none;
+    }
+
     input[type="file"]::before {
         /* content: 'Masukkan File Gambar Profile'; */
         color: black;

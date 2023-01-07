@@ -18,6 +18,7 @@
         </div>
 
         {{-- Show Qeustion: details q, comment form, comment list --}}
+        
         @livewire("admin.card.show-question", ["question" => $question])
 
 

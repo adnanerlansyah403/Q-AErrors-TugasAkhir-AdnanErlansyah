@@ -109,6 +109,30 @@
     </div>
 </section>
 
+@if(Auth::user())
+    {{-- #ERRORS --}}
+    <section class="section" id="errors">
+        <div class="container">
+            <h1 class="text-xl text-center"><span class="span">E</span>rrors </h1>
+            
+            <h3 class="text-md text-center text-gray-400">What are you going to do today?</h3>
+            <p class="text-[14px] text-center text-gray-400">Don't be shy and afraid to share the errors you want</p>
+
+            <div class="flex items-center justify-center gap-4 mt-20">
+                <a href="{{ route('errors.searcherror.create') }}" class="flex items-center gap-1 outline outline-1 outline-red-primary text-red-primary hover:bg-red-primary hover:text-white hover:outline-none hover:translate-x-1 rounded-full text-[18px] px-3 py-2 font-bold translate-y-1 transition duration-200 ease-in-out">
+                    <ion-icon name="help-outline"></ion-icon>
+                    Ask Now
+                </a>
+                <a href="{{ route('errors.fixerror.create') }}" class="flex items-center gap-1 outline outline-1 outline-red-primary text-red-primary hover:bg-red-primary hover:text-white hover:outline-none hover:translate-x-1 rounded-full text-[18px] px-3 py-2 font-bold translate-y-1 transition duration-200 ease-in-out">
+                    <ion-icon name="share-social-outline"></ion-icon>
+                    Share Now
+                </a>
+            </div>
+
+        </div>
+    </section>
+@endif
+
 {{-- #REVIEWS --}}
 <section class="section" id="reviews">
     <div class="container">
@@ -172,7 +196,9 @@
             <div class="left-side">
                 <img src="{{ asset("assets/images/contact.svg") }}" width="650" height="475" alt="">
             </div>
+
             @livewire("form.contact-form")
+            
         </div>
 
     </div>

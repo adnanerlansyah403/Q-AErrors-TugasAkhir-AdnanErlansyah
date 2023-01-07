@@ -67,6 +67,7 @@
         </style>
         
         {{-- Livewire Styles --}}
+        
         @livewireStyles
 
     </head>
@@ -126,6 +127,7 @@
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
         {{-- Livewire Scripts --}}
+
         @livewireScripts
 
         <script>

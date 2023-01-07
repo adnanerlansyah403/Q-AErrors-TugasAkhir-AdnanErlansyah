@@ -40,6 +40,7 @@ class="py-[20px] container flex items-center justify-between w-full active">
 
     <div class="text-md flex items-center gap-4">
         @if (Auth::user())
+            {{-- <a href="#errors" class="outline outline-1 outline-red-primary text-red-primary hover:bg-red-primary hover:text-white rounded-full text-[18px] px-3 py-2 font-bold translate-y-1 transition duration-200 ease-in-out">Ask Now</a> --}}
             @if(Auth::user()->role->id == 1)
                 <a href="{{ route("users.profile") }}">D<span class="span">ashboard</span></a>
                 

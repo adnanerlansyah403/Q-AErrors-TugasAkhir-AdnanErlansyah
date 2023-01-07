@@ -54,7 +54,7 @@
         
         @if($question->thumbnail_path)
             <figure class="mb-6">
-                <img src="{{ asset("storage/" . $question->thumbnail_path) }}" alt="imagerror" class="rounded-lg w-full object-cover h-[600px]">
+                <img src="{{ asset( 'storage' . $question->thumbnail_path) }}" alt="imagerror" class="rounded-lg w-full object-cover h-[600px]">
             </figure>
         @endif
         
